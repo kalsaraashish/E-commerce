@@ -67,6 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ShopZone.mdf" />
+    <Content Include="App_Data\ShopZone_log.ldf">
+      <DependentUpon>ShopZone.mdf</DependentUpon>
+    </Content>
     <Content Include="css\style.css" />
     <Content Include="Homepage.aspx" />
     <Content Include="images\i1.png" />

@@ -68,7 +68,7 @@
                             <a class="nav-link text-white" href="#">Sign-In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Sign-Up</a>
+                            <a class="nav-link text-white" href="sign_up.aspx">Sign-Up</a>
                         </li>
                     </ul>
                 </div>
