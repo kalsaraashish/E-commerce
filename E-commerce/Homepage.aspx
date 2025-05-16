@@ -94,15 +94,15 @@
                 <div class="carousel-item">
                     <img src="images/slide2.jpg" class="d-block w-100" alt="Slide 2">
                     <div class="carousel-caption">
-                        <h5>Second Slide Title</h5>
-                        <p>This is a description for the second slide.</p>
+                        <h5>Redmi A4 5G</h5>
+                        <p>Starting 6,499</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/a2.jpeg" class="d-block w-100" alt="Slide 3">
+                    <img src="images/slide3.jpg" class="d-block w-100" alt="Slide 3">
                     <div class="carousel-caption">
-                        <h5>Third Slide Title</h5>
-                        <p>This is a description for the third slide.</p>
+                        <h5>Toys And Games</h5>
+                        <p>Under 499 And 5% CashBank</p>
                     </div>
                 </div>
             </div>
