@@ -117,7 +117,7 @@
                 <asp:FileUpload ID="img" runat="server" CssClass="form-control" />
             </div>
 
-            <asp:Button ID="btn" runat="server" Text="Sign Up" CssClass="btn btn-primary w-100" OnClick="btnSubmit_Click"  />
+            <asp:Button ID="btn" runat="server" Text="Sign Up" CssClass="btn btn-primary w-100" OnClick="btn_Click"   />
         </div>
 
 
