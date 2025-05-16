@@ -1,29 +1,24 @@
-﻿
-body, html {
+﻿body, html {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #7fb7ee;
 }
 
 /* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #0d6efd;
-    color: white;
-    flex-wrap: wrap;
-    padding:1rem;
+    box-shadow: 1px 0px 10px black;
+    font-size: 1.2em;
 }
 
 .logo {
     font-size: 1.8em;
     font-weight: bold;
-    padding-left:10px;
+    padding-left: 10px;
     animation: fadeInLeft 1s ease-out;
 }
+li a{
 
+}
 .nav-links a {
     margin-left: 20px;
     color: white;
@@ -53,22 +48,56 @@ body, html {
             width: 100%;
         }
 
-/* Carousel Size */
-.carousel-inner {
-    max-width: 1400px;
-    height: 480px;
-    margin: 20px auto;
-    overflow: hidden;
-    
+/* Carousel */
+.carousel {
+    max-width: 100%;
 }
 
-    .carousel-inner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+.carousel-inner {
+    max-width: 1400px;
+    height: auto;
+    margin: 20px auto;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    /*position: absolute;*/
+/*    bottom: 20%;*/
+/*    right:50%;*/
+    /*transform: translateX(-50%);*/
+    background-color: rgba(0, 0, 0, 0.6);
+    /*color: #fff;
+    padding: 15px 25px;*/
+    border-radius: 8px; 
+    /*text-align: center;
+    z-index: 10;*/
+}
+
+/* Submenu dropdown */
+.dropdown-submenu {
+    position: relative;
+}
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        display: none;
+        position: absolute;
     }
 
-/* Responsive Nav Links */
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    }
+
+
+/* Responsive */
 @media (max-width: 768px) {
     .nav-links {
         width: 100%;
@@ -80,8 +109,25 @@ body, html {
             display: block;
             margin: 10px 0;
         }
-}
 
+    .carousel-caption {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+        bottom: 10%;
+    }
+
+        .carousel-caption h5 {
+            font-size: 1.2rem;
+        }
+
+        .carousel-caption p {
+            font-size: 0.9rem;
+        }
+}
+.card-img{
+    height:12rem;
+    width:auto;
+}
 /* Animations */
 @keyframes fadeInLeft {
     from {
@@ -94,3 +140,5 @@ body, html {
         transform: translateX(0);
     }
 }
+
+

@@ -5,30 +5,78 @@
 <head runat="server">
     <title>ShopZone - Homepage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet" />
 
     <!-- Bootstrap CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
 
-        <%-- Navbar Section --%>
-        <nav class="navbar" style="padding:0.8rem">
-            <div class="logo">ShopZone</div>
-            <div class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Products</a>
-                <a href="#">Deals</a>
-                <a href="#">Cart</a>
-                <a href="#">Login</a>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-4">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="#">ShopZone</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">   
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+
+                        <!-- Products Dropdown with Submenu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="productsDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Products
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+
+                                <!-- Men Category -->
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Men</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Shirts</a></li>
+                                        <li><a class="dropdown-item" href="#">Pants</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Women Category -->
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Women</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Tops</a></li>
+                                        <li><a class="dropdown-item" href="#">Leggings</a></li>
+                                        <li><a class="dropdown-item" href="#">Dresses</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item" >
+                            <a class="nav-link text-white" href="#">Cart</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Sign-In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Sign-Up</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
-        <%-- Bootstrap Carousel Slider --%>
+
+        <!-- Carousel Slider -->
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -37,24 +85,24 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images/a1.jpg" class="d-block w-100" alt="Slide 1">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                    <img src="images/slide1.jpg" class="d-block w-100" alt="Slide 1">
+                    <div class="carousel-caption">
+                        <h1>Welcome to ShopZone</h1>
+                        <p>Your favorite online store!</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/a2.jpeg" class="d-block w-100" alt="Slide 2">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+                    <img src="images/slide2.jpg" class="d-block w-100" alt="Slide 2">
+                    <div class="carousel-caption">
+                        <h5>Second Slide Title</h5>
+                        <p>This is a description for the second slide.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="images/a2.jpeg" class="d-block w-100" alt="Slide 3">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>I Phone </h5>
-                        <p>Some representative placeholder content for the third slide.</p>
+                    <div class="carousel-caption">
+                        <h5>Third Slide Title</h5>
+                        <p>This is a description for the third slide.</p>
                     </div>
                 </div>
             </div>
@@ -69,6 +117,53 @@
         </div>
         <hr />
 
+        <!-- Product Items Section -->
+        <div class="container my-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="images/i1.png" class="card-img-top card-img" alt="Product 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Product Title</h5>
+                            <p class="card-text">Short description of the product.</p>
+                            <div class="mb-2">⭐⭐⭐⭐☆</div>
+                            <p class="card-text fw-bold">$49.99</p>
+                            <a href="#" class="btn btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="images/i2.jpg" class="card-img-top card-img" alt="Product 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Another Product</h5>
+                            <p class="card-text">Great quality item with discount.</p>
+                            <div class="mb-2">⭐⭐⭐⭐⭐</div>
+                            <p class="card-text fw-bold">$29.99</p>
+                            <a href="#" class="btn btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <img src="images/i1.png" class="card-img-top card-img" alt="Product 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Another Product</h5>
+                            <p class="card-text">Great quality item with discount.</p>
+                            <div class="mb-2">⭐⭐⭐⭐⭐</div>
+                            <p class="card-text fw-bold">$29.99</p>
+                            <a href="#" class="btn btn-primary">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more cards as needed -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            &copy; 2025 ShopZone. All rights reserved.
+        </footer>
     </form>
 </body>
 </html>
