@@ -64,7 +64,7 @@
                             <a class="nav-link text-white" href="#">Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Sign-In</a>
+                            <a class="nav-link text-white" href="sign_in.aspx">Sign-In</a>
                         </li>
                     </ul>
                 </div>
@@ -117,7 +117,12 @@
                 <asp:FileUpload ID="img" runat="server" CssClass="form-control" />
             </div>
 
-            <asp:Button ID="btn" runat="server" Text="Sign Up" CssClass="btn btn-primary w-100" OnClick="btn_Click"   />
+            <asp:Button ID="btn" runat="server" Text="Sign Up" CssClass="btn btn-primary w-100" OnClick="btn_Click" />
+
+            <div class="mb-3 text-center">
+                <br />
+                <p>Already have an account?<a href="sign_in.aspx">Sign-In</a></p>
+            </div>
         </div>
 
 
