@@ -16,14 +16,16 @@ namespace E_commerce
 
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e, SqlConnection con)
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
             
         }
 
         protected void btn_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Ashish_Kalsara\\OneDrive\\Desktop\\E-commerce\\E-commerce\\App_Data\\ShopZone.mdf;Integrated Security=True");
+            string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
+
+            SqlConnection conn = new SqlConnection(connStr);
 
             string nm = name.Text;
             string password = pass.Text;
@@ -47,13 +49,14 @@ namespace E_commerce
                 imagePath = "~/user_img/" + fileName;
             }
             conn.Open();
+            //SqlCommand cmd = new SqlCommand("insert into user_data(username,password,email,p_number,address,gender,img) values(@nm,@password,@em,@phone,@add,@gen,@imagePath)", conn);
             SqlCommand cmd = new SqlCommand("insert into user_data(username,password,email,p_number,address,gender,img) values(@nm,@password,@em,@phone,@add,@gender,@imagePath)", conn);
             cmd.Parameters.AddWithValue("@nm", nm);
             cmd.Parameters.AddWithValue("@password", password);
             cmd.Parameters.AddWithValue("@em", em);
             cmd.Parameters.AddWithValue("@phone", phone);
             cmd.Parameters.AddWithValue("@add", add);
-            cmd.Parameters.AddWithValue("@gen", gender);
+            cmd.Parameters.AddWithValue("@gender", gender);
             cmd.Parameters.AddWithValue("@imagePath", imagePath);
             int a = cmd.ExecuteNonQuery();
             if (a > 0)
