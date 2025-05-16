@@ -77,13 +77,13 @@
             <h2 class="text-center mb-4">Sign Up</h2>
 
             <div class="mb-3">
-                <label for="txtUsername" class="form-label">Username</label>
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter username" />
+                <label for="name" class="form-label">Username</label>
+                <asp:TextBox ID="name" runat="server" CssClass="form-control" placeholder="Enter username" />
             </div>
 
             <div class="mb-3">
-                <label for="txtPassword" class="form-label">Password</label>
-                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Enter password" />
+                <label for="pass" class="form-label">Password</label>
+                <asp:TextBox ID="pass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Enter password" />
             </div>
 
             <div class="mb-3">
@@ -92,18 +92,18 @@
             </div>
 
             <div class="mb-3">
-                <label for="txtEmail" class="form-label">Email</label>
-                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" placeholder="Enter email" />
+                <label for="email" class="form-label">Email</label>
+                <asp:TextBox ID="email" runat="server" CssClass="form-control" TextMode="Email" placeholder="Enter email" />
             </div>
 
             <div class="mb-3">
-                <label for="txtPhone" class="form-label">Phone Number</label>
-                <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" placeholder="Enter phone number" />
+                <label for="p_mo" class="form-label">Phone Number</label>
+                <asp:TextBox ID="p_mo" runat="server" CssClass="form-control" placeholder="Enter phone number" />
             </div>
 
             <div class="mb-3">
-                <label for="txtAddress" class="form-label">Address</label>
-                <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Enter address" />
+                <label for="address" class="form-label">Address</label>
+                <asp:TextBox ID="address" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Enter address" />
             </div>
 
             <div class="mb-3">
@@ -113,11 +113,11 @@
             </div>
 
             <div class="mb-3">
-                <label for="fuImage" class="form-label">Upload Image</label>
-                <asp:FileUpload ID="fuImage" runat="server" CssClass="form-control" />
+                <label for="img" class="form-label">Upload Image</label>
+                <asp:FileUpload ID="img" runat="server" CssClass="form-control" />
             </div>
 
-            <asp:Button ID="btnSubmit" runat="server" Text="Sign Up" CssClass="btn btn-primary w-100"  />
+            <asp:Button ID="btn" runat="server" Text="Sign Up" CssClass="btn btn-primary w-100" OnClick="btnSubmit_Click"  />
         </div>
 
 
