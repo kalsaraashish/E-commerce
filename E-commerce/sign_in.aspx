@@ -22,10 +22,12 @@
                 <h2 class="text-center mb-4">Sign In</h2>
                 <asp:Label ID="lblMessage" runat="server" CssClass="alert alert-danger d-none" EnableViewState="false" />
                 <div class="mb-3">
-                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Username" />
+                    <asp:TextBox ID="username" runat="server" CssClass="form-control" placeholder="Username" />
+                    <asp:RequiredFieldValidator ID="r1" runat="server" ControlToValidate="username" CssClass="text-danger" ErrorMessage="Enter valid Username"></asp:RequiredFieldValidator>
                 </div>
                 <div class="mb-3">
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Password" />
+                    <asp:TextBox ID="pass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Password" />
+                    <asp:RequiredFieldValidator ID="r2" runat="server" ControlToValidate="pass" CssClass="text-danger" ErrorMessage="Enter valid Password"></asp:RequiredFieldValidator>
                 </div>
                 <div class="d-grid">
                     <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-primary" />
