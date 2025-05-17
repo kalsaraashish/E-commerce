@@ -36,17 +36,23 @@ namespace E_commerce
 
             if (img.HasFile)
             {
-                string ext = System.IO.Path.GetExtension(img.PostedFile.FileName).ToLower();
-                if (ext != ".jpg" && ext != ".jpeg" && ext != ".png" && ext != ".gif")
+                try
                 {
-                    Response.Write("<script>alert('Only image files (.jpg, .jpeg, .png, .gif) are allowed');</script>");
+                    string imgDir = Server.MapPath("~/img/");
+                    if (!System.IO.Directory.Exists(imgDir))
+                    {
+                        System.IO.Directory.CreateDirectory(imgDir);
+                    }
+                    string fileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(img.FileName);
+                    string filePath = System.IO.Path.Combine(imgDir, fileName);
+                    img.SaveAs(filePath);
+                    imagePath = "~/img/" + fileName;
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert('Image upload failed: " + ex.Message.Replace("'", "") + "');</script>");
                     return;
                 }
-
-                string fileName = System.IO.Path.GetFileName(img.PostedFile.FileName);
-                string filePath = Server.MapPath("~/user_img/") + fileName;
-                img.SaveAs(filePath);
-                imagePath = "~/user_img/" + fileName;
             }
             else
             {
@@ -79,7 +85,6 @@ namespace E_commerce
             cmd.Parameters.AddWithValue("@imagePath", imagePath);
 
             int a = cmd.ExecuteNonQuery();
-            
 
             if (a > 0)
             {

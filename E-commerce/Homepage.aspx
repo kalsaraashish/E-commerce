@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">   
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active text-warning" aria-current="page" href="Homepage.aspx">Home</a>
                         </li>
 
                         <!-- Products Dropdown with Submenu -->
@@ -65,7 +65,7 @@
                             <a class="nav-link text-white" href="#">Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Sign-In</a>
+                            <a class="nav-link text-white" href="sign_in.aspx">Sign-In</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="sign_up.aspx">Sign-Up</a>

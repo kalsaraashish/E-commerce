@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Custom CSS -->
+
     <link href="css/style.css" rel="stylesheet" />
 
     <!-- Bootstrap CSS & JS -->
@@ -66,6 +67,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="sign_in.aspx">Sign-In</a>
                         </li>
+                        <li class="nav-item">
+    <a class="nav-link text-warning active" href="sign_up.aspx">Sign-Up</a>
+</li>
                     </ul>
                 </div>
             </div>

@@ -78,6 +78,7 @@
     <Content Include="images\slide1.jpg" />
     <Content Include="images\slide2.jpg" />
     <Content Include="images\slide3.jpg" />
+    <Content Include="img\i1.png" />
     <Content Include="sign_in.aspx" />
     <Content Include="sign_up.aspx" />
     <Content Include="Web.config" />
@@ -115,9 +116,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="user_img\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
