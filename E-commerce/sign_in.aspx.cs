@@ -30,13 +30,20 @@ namespace E_commerce
             if (reader.HasRows)
             {
                 // Login successful
+                Session["username"] = username.Text;
                 Response.Write("<script>alert('Login successful');</script>");
-                Response.Redirect("Homepage.aspx");
+                Response.Redirect("userhomepage.aspx");
+                username.Text = string.Empty;
+                pass.Text = string.Empty;
+                username.Focus();
             }
             else
             {
                 // Login failed
                 Response.Write("<script>alert('Invalid username or password');</script>");
+                username.Text = string.Empty;   
+                pass.Text = string.Empty;
+                username.Focus();
             }
 
             conn.Close();

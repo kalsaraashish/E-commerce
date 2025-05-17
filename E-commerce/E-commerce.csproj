@@ -80,7 +80,9 @@
     <Content Include="images\slide3.jpg" />
     <Content Include="img\i1.png" />
     <Content Include="sign_in.aspx" />
+    <Content Include="sign_out.aspx" />
     <Content Include="sign_up.aspx" />
+    <Content Include="userhomepage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -99,12 +101,26 @@
     <Compile Include="sign_in.aspx.designer.cs">
       <DependentUpon>sign_in.aspx</DependentUpon>
     </Compile>
+    <Compile Include="sign_out.aspx.cs">
+      <DependentUpon>sign_out.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="sign_out.aspx.designer.cs">
+      <DependentUpon>sign_out.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sign_up.aspx.cs">
       <DependentUpon>sign_up.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="sign_up.aspx.designer.cs">
       <DependentUpon>sign_up.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="userhomepage.aspx.cs">
+      <DependentUpon>userhomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userhomepage.aspx.designer.cs">
+      <DependentUpon>userhomepage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

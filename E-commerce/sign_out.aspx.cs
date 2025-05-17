@@ -7,12 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace E_commerce
 {
-    public partial class Homepage : System.Web.UI.Page
+    public partial class sign_out : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-
+            Session.Abandon();
+            Session.RemoveAll();
+            Session.Clear();
+            Response.Redirect("Homepage.aspx");
         }
     }
 }
