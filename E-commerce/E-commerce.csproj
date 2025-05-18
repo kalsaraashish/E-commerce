@@ -81,6 +81,7 @@
     <Content Include="images\slide2.jpg" />
     <Content Include="images\slide3.jpg" />
     <Content Include="img\i1.png" />
+    <Content Include="recoverpass.aspx" />
     <Content Include="sign_in.aspx" />
     <Content Include="sign_out.aspx" />
     <Content Include="sign_up.aspx" />
@@ -117,6 +118,13 @@
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="recoverpass.aspx.cs">
+      <DependentUpon>recoverpass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="recoverpass.aspx.designer.cs">
+      <DependentUpon>recoverpass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="sign_in.aspx.cs">
       <DependentUpon>sign_in.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

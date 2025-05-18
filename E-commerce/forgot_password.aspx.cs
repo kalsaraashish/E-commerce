@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using System.Net.Mail;
+using System.Net;
 
 namespace E_commerce
 {
@@ -43,13 +44,24 @@ namespace E_commerce
                     //send email
                     string ToEamilAddress = dt.Rows[0]["email"].ToString();
                     string Username = dt.Rows[0]["username"].ToString();
-                    string emailBody = "Hello " + Username + ",<br/><br/>" + "Please click the link below to reset your password:<br/>";
+                    string emailBody = "Hello " + Username + ",<br/><br/>" + "Please click the link below to reset your password:<br/>"+ "<a href='https://localhost:44346/recoverpass.aspx?id=" + myid + "'>Reset Password</a><br/><br/>" +
+                    "Thank you!<br/>" +
+                    "ShopZone Team";
+                    MailMessage Passmail = new MailMessage("batukbhaikalsara@gmail.com ",ToEamilAddress);
+                    Passmail.Body = emailBody;  
+                    Passmail.IsBodyHtml = true;
+                    Passmail.Subject = "Password Reset Request";
+                    SmtpClient SMTP = new SmtpClient("smtp.gmail.com", 587);
+                    SMTP.Credentials = new NetworkCredential()
+                    {
+                        UserName= "batukbhaikalsara@gmail.com",
+                        Password= "$Ak15076&6416"
 
-                    //"<a href='http://localhost:1234/reset_password.aspx?id=" + myid + "'>Reset Password</a><br/><br/>" +
-                    //"Thank you!<br/>" +
-                    //"ShopZone Team";
-                    MailMessage Passmail = new MailMessage("kalsaraashish@gmail.com ",ToEamilAddress);
-                    
+                    };
+                    SMTP.EnableSsl = true;
+                    SMTP.Send(Passmail);
+
+
 
 
 
