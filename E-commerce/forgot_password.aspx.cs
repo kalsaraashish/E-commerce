@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Net.Mail;
 
 namespace E_commerce
 {
@@ -31,13 +32,41 @@ namespace E_commerce
                 DataTable dt = new DataTable();
                 int a = da.Fill(dt);
 
-                if (a > 0)
+                if (a > 0)  
                 {
                     string myid = Guid.NewGuid().ToString();
                     int uid = Convert.ToInt32(dt.Rows[0]["id"]);
+                    
                     SqlCommand emailcheck = new SqlCommand("insert into forgotpass(id,uid,requestdatetime) values('" + myid + "','" + uid + "',GETDATE())", conn);
                     emailcheck.ExecuteNonQuery();
+
+                    //send email
+                    string ToEamilAddress = dt.Rows[0]["email"].ToString();
+                    string Username = dt.Rows[0]["username"].ToString();
+                    string emailBody = "Hello " + Username + ",<br/><br/>" + "Please click the link below to reset your password:<br/>";
+
+                    //"<a href='http://localhost:1234/reset_password.aspx?id=" + myid + "'>Reset Password</a><br/><br/>" +
+                    //"Thank you!<br/>" +
+                    //"ShopZone Team";
+                    MailMessage Passmail = new MailMessage("kalsaraashish@gmail.com ",ToEamilAddress);
+                    
+
+
+
+                    Response.Write("<script>alert('Password reset link sent to your email.');</script>");
+                    
+                    email.Text=string.Empty;
+                    
+                    email.Focus();
+                    
                     conn.Close();
+
+                }
+                else 
+                { 
+                    Response.Write("<script>alert('Email not found.');</script>");
+                    email.Text = string.Empty;
+                    email.Focus();
                 }
             }
         }
