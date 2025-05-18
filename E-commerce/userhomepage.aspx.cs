@@ -13,6 +13,7 @@ namespace E_commerce
         {
             if (Session["username"] != null)
             {
+
                 username.Text = "Hello, "+Session["username"].ToString();
             }
             else

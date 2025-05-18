@@ -14,7 +14,7 @@ namespace E_commerce
             Session.Abandon();
             Session.RemoveAll();
             Session.Clear();
-            Response.Redirect("Homepage.aspx");
+            Response.Redirect("~/Homepage.aspx");
         }
     }
 }

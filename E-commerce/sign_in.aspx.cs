@@ -14,7 +14,15 @@ namespace E_commerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["username"] != null && Request.Cookies["pass"] != null)
+                {
+                    username.Text = Request.Cookies["username"].Value;
+                    pass.Text = Request.Cookies["pass"].Value;
+                    chkRememberMe.Checked = true;
+                }
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -29,22 +37,46 @@ namespace E_commerce
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                // Login successful
+                reader.Read(); // 🔥 THIS IS REQUIRED
+
+                if (chkRememberMe.Checked)
+                {
+                    Response.Cookies["username"].Value = username.Text;
+                    Response.Cookies["pass"].Value = pass.Text;
+
+                    Response.Cookies["username"].Expires = DateTime.Now.AddHours(2);
+                    Response.Cookies["pass"].Expires = DateTime.Now.AddHours(2);
+                }
+                else
+                {
+                    Response.Cookies["username"].Expires = DateTime.Now.AddHours(-1);
+                    Response.Cookies["pass"].Expires = DateTime.Now.AddHours(-1);
+                }
+
+                string usertype = reader[8].ToString(); // ✅ This will now work
                 Session["username"] = username.Text;
-                Response.Write("<script>alert('Login successful');</script>");
-                Response.Redirect("userhomepage.aspx");
+
+                if (usertype == "admin")
+                {
+                    Response.Redirect("adminhomepage.aspx");
+                }
+                else
+                {
+                    Response.Redirect("userhomepage.aspx");
+                }
+
                 username.Text = string.Empty;
                 pass.Text = string.Empty;
                 username.Focus();
             }
             else
             {
-                // Login failed
                 Response.Write("<script>alert('Invalid username or password');</script>");
-                username.Text = string.Empty;   
+                username.Text = string.Empty;
                 pass.Text = string.Empty;
                 username.Focus();
             }
+
 
             conn.Close();
         }
