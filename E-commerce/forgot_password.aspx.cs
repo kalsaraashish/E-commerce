@@ -52,13 +52,10 @@ namespace E_commerce
                     Passmail.IsBodyHtml = true;
                     Passmail.Subject = "Password Reset Request";
                     SmtpClient SMTP = new SmtpClient("smtp.gmail.com", 587);
-                    SMTP.Credentials = new NetworkCredential()
-                    {
-                        UserName= "batukbhaikalsara@gmail.com",
-                        Password= "$Ak15076&6416"
-
-                    };
                     SMTP.EnableSsl = true;
+                    SMTP.Credentials = new NetworkCredential("batukbhaikalsara@gmail.com", "mnjrysyewpwtmszr");
+                    
+                    
                     SMTP.Send(Passmail);
 
 
