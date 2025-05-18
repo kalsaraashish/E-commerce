@@ -53,16 +53,18 @@ namespace E_commerce
                     Response.Cookies["pass"].Expires = DateTime.Now.AddHours(-1);
                 }
 
-                string usertype = reader[8].ToString(); // ✅ This will now work
                 Session["username"] = username.Text;
+                
+                string usertype = reader["usertype"].ToString().Trim().ToLower();
 
-                if (usertype == "admin")
+                if (usertype == "user")
                 {
-                    Response.Redirect("adminhomepage.aspx");
+                    Response.Redirect("~/userhomepage.aspx");
                 }
                 else
                 {
-                    Response.Redirect("userhomepage.aspx");
+                    Response.Write(usertype);
+                    Response.Redirect("~/admin/adminhomepage.aspx");
                 }
 
                 username.Text = string.Empty;

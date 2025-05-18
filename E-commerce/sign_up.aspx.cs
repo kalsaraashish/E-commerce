@@ -75,7 +75,7 @@ namespace E_commerce
             }
 
             // ✅ Insert user
-            SqlCommand cmd = new SqlCommand("INSERT INTO user_data(username, password, email, p_number, address, gender, img) VALUES (@nm, @password, @em, @phone, @add, @gender, @imagePath)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO user_data(username, password, email, p_number, address, gender, img,usertype) VALUES (@nm, @password, @em, @phone, @add, @gender, @imagePath,'user')", conn);
             cmd.Parameters.AddWithValue("@nm", nm);
             cmd.Parameters.AddWithValue("@password", password);
             cmd.Parameters.AddWithValue("@em", em);
