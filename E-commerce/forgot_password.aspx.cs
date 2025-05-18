@@ -34,7 +34,7 @@ namespace E_commerce
                 if (a > 0)
                 {
                     string myid = Guid.NewGuid().ToString();
-                    int uid = Convert.ToInt32(dt.Rows[0]["uid"]);
+                    int uid = Convert.ToInt32(dt.Rows[0]["id"]);
                     SqlCommand emailcheck = new SqlCommand("insert into forgotpass(id,uid,requestdatetime) values('" + myid + "','" + uid + "',GETDATE())", conn);
                     emailcheck.ExecuteNonQuery();
                     conn.Close();
