@@ -68,10 +68,10 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Cart</a>
+                                <a class="nav-link text-white" href="#">Manage</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="/sign_out.aspx">Sign-Out</a>
+                                <a class="nav-link text-white" href="../sign_out.aspx">Sign-Out</a>
                             </li>
                         </ul>
                     </div>

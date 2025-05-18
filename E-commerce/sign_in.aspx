@@ -89,9 +89,14 @@
                     <asp:RequiredFieldValidator ID="r2" runat="server" ControlToValidate="pass" CssClass="text-danger" ErrorMessage="Enter valid Password"></asp:RequiredFieldValidator>
                 </div>
 
-                <div class="form-check mb-3">
-                    <asp:CheckBox ID="chkRememberMe" runat="server" CssClass="form-check-input" />
-                    <label class="form-check-label" for="chkRememberMe">Remember me</label>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="form-check">
+                        <asp:CheckBox ID="chkRememberMe" runat="server" CssClass="form-check-input" />
+                        <label class="form-check-label" for="chkRememberMe">Remember me</label>
+                    </div>
+                   <asp:HyperLink ID="lnkForgotPassword" runat="server" NavigateUrl="~/forgot_password.aspx" CssClass="text-decoration-none">
+        Forgot Password?
+    </asp:HyperLink>
                 </div>
                 <div class="d-grid">
                     <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogin_Click" />

@@ -73,6 +73,7 @@
       <DependentUpon>ShopZone.mdf</DependentUpon>
     </Content>
     <Content Include="css\style.css" />
+    <Content Include="forgot_password.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="images\i1.png" />
     <Content Include="images\i2.jpg" />
@@ -89,6 +90,7 @@
   <ItemGroup>
     <Compile Include="admintemp.Master.cs">
       <DependentUpon>admintemp.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admintemp.Master.designer.cs">
       <DependentUpon>admintemp.Master</DependentUpon>
@@ -99,6 +101,13 @@
     </Compile>
     <Compile Include="admin\adminhomepage.aspx.designer.cs">
       <DependentUpon>adminhomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forgot_password.aspx.cs">
+      <DependentUpon>forgot_password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forgot_password.aspx.designer.cs">
+      <DependentUpon>forgot_password.aspx</DependentUpon>
     </Compile>
     <Compile Include="Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
