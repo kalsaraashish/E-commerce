@@ -49,7 +49,7 @@ namespace E_commerce
                     string emailBody = "Hello " + Username + ",<br/><br/>" + "Please click the link below to reset your password:<br/>"+ "<a href='https://localhost:44346/recoverpass.aspx?id=" + tempid + "'>Reset Password</a><br/><br/>" +
                     "Thank you!<br/>" +
                     "ShopZone Team";
-                    MailMessage Passmail = new MailMessage("ashish@gmail.com ",ToEamilAddress);
+                    MailMessage Passmail = new MailMessage("ashish@gmail.com ", ToEamilAddress);
                     Passmail.Body = emailBody;  
                     Passmail.IsBodyHtml = true;
 
@@ -59,7 +59,7 @@ namespace E_commerce
 
                     SMTP.EnableSsl = true;
 
-                    SMTP.Credentials = new NetworkCredential("ashish@gmail.com", "fsdjn");
+                    SMTP.Credentials = new NetworkCredential("ashish@gmail.com", "fsdfsd");
                     
                     
                     SMTP.Send(Passmail);

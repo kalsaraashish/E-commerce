@@ -16,6 +16,12 @@
 </head>
 <body>
     <form id="form1" runat="server">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top px-4">
+<div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="Homepage.aspx">ShopZone</a>
+    </div>
+        </nav>
+
        <div class="container d-flex align-items-center justify-content-center min-vh-100">
             <div class="card shadow p-4 fade-in" style="max-width: 400px; width: 100%;">
                 <h3 class="text-center mb-4">Reset Password</h3>

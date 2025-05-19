@@ -50,9 +50,11 @@ namespace E_commerce
 
                     updateCmd.ExecuteNonQuery();
 
-                    lblMessage.CssClass = "text-success";
-                    lblMessage.Text = "Your password has been successfully reset!";
-                    btnSubmit.Enabled = false;
+                    Response.Write("<script>alert('Password updated successfully!');</script>");
+                   SqlCommand deleteCmd = new SqlCommand("DELETE FROM forgotpass WHERE uid = '"+uid+"'", conn);
+                    deleteCmd.ExecuteNonQuery();
+                    Response.Redirect("~/sign_in.aspx");
+
                 }
                 else
                 {
