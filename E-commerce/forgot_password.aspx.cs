@@ -35,31 +35,34 @@ namespace E_commerce
 
                 if (a > 0)  
                 {
-                    string myid = Guid.NewGuid().ToString();
+                    string tempid = Guid.NewGuid().ToString();
                     int uid = Convert.ToInt32(dt.Rows[0]["id"]);
                     
-                    SqlCommand emailcheck = new SqlCommand("insert into forgotpass(id,uid,requestdatetime) values('" + myid + "','" + uid + "',GETDATE())", conn);
+                    SqlCommand emailcheck = new SqlCommand("insert into forgotpass(id,uid,requestdatetime) values('" + tempid + "','" + uid + "',GETDATE())", conn);
                     emailcheck.ExecuteNonQuery();
 
                     //send email
                     string ToEamilAddress = dt.Rows[0]["email"].ToString();
                     string Username = dt.Rows[0]["username"].ToString();
-                    string emailBody = "Hello " + Username + ",<br/><br/>" + "Please click the link below to reset your password:<br/>"+ "<a href='https://localhost:44346/recoverpass.aspx?id=" + myid + "'>Reset Password</a><br/><br/>" +
+
+
+                    string emailBody = "Hello " + Username + ",<br/><br/>" + "Please click the link below to reset your password:<br/>"+ "<a href='https://localhost:44346/recoverpass.aspx?id=" + tempid + "'>Reset Password</a><br/><br/>" +
                     "Thank you!<br/>" +
                     "ShopZone Team";
-                    MailMessage Passmail = new MailMessage("batukbhaikalsara@gmail.com ",ToEamilAddress);
+                    MailMessage Passmail = new MailMessage("ashish@gmail.com ",ToEamilAddress);
                     Passmail.Body = emailBody;  
                     Passmail.IsBodyHtml = true;
+
                     Passmail.Subject = "Password Reset Request";
+
                     SmtpClient SMTP = new SmtpClient("smtp.gmail.com", 587);
+
                     SMTP.EnableSsl = true;
-                    SMTP.Credentials = new NetworkCredential("batukbhaikalsara@gmail.com", "mnjrysyewpwtmszr");
+
+                    SMTP.Credentials = new NetworkCredential("ashish@gmail.com", "fsdjn");
                     
                     
                     SMTP.Send(Passmail);
-
-
-
 
 
                     Response.Write("<script>alert('Password reset link sent to your email.');</script>");
@@ -69,7 +72,6 @@ namespace E_commerce
                     email.Focus();
                     
                     conn.Close();
-
                 }
                 else 
                 { 

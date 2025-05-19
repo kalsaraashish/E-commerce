@@ -43,7 +43,7 @@ namespace E_commerce
                 if (result != null)
                 {
                     int uid = Convert.ToInt32(result);
-
+                    
                     SqlCommand updateCmd = new SqlCommand("UPDATE user_data SET password = @pwd WHERE id = @uid", conn);
                     updateCmd.Parameters.AddWithValue("@pwd", txtNewPassword.Text);
                     updateCmd.Parameters.AddWithValue("@uid", uid);
