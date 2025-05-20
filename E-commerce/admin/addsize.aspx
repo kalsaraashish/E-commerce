@@ -31,7 +31,7 @@
             <div class="mb-3">
                 <label for="ddlcategory" class="control-label mb-3">Category</label>
 
-                <asp:DropDownList ID="catlist" runat="server" CssClass="form-select"></asp:DropDownList>
+                <asp:DropDownList ID="catlist" runat="server" CssClass="form-select" OnSelectedIndexChanged="catlist_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
 
                 <asp:RequiredFieldValidator ID="r2" runat="server" CssClass="text-danger" ErrorMessage="Select Category name" ControlToValidate="catlist" ValidationGroup="subcatGroup" ></asp:RequiredFieldValidator>
             </div>

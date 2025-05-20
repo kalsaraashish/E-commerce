@@ -19,7 +19,6 @@ namespace E_commerce.admin
             {
                 Bindbrand();
                 Bindcategory();
-                Bindsubcategory();
                 Bindgender();
             }
         }
@@ -28,8 +27,35 @@ namespace E_commerce.admin
 
         protected void btnsize_Click(object sender, EventArgs e)
         {
-            
-        }
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand insertdata = new SqlCommand("insert into sizees(sizename,brid,catid,subcatid,genid) values('" + sizename.Text + "','" + brlist.SelectedItem.Value + "','" + catlist.SelectedItem.Value + "','" + subcatlist.SelectedItem.Value+ "','"+genlist.SelectedItem.Value+"')", conn);
+                int a=insertdata.ExecuteNonQuery();
+                conn.Close();
+                if (a > 0)
+                {
+                    Response.Write("<script>alert('Size Added successfully!');</script>");
+
+                    sizename.Text = string.Empty;
+
+                    brlist.ClearSelection();
+                    brlist.Items.FindByValue("0").Selected= true;
+
+                    catlist.ClearSelection();
+                    catlist.Items.FindByValue("0").Selected= true;
+
+                    subcatlist.ClearSelection();
+                    subcatlist.Items.FindByValue("0").Selected= true;
+                     
+                    genlist.ClearSelection();
+                    genlist.Items.FindByValue("0").Selected= true;
+
+                }
+
+               
+            }
+            }
 
         private void Bindbrand()
         {
@@ -46,7 +72,7 @@ namespace E_commerce.admin
                     brlist.DataTextField = "name";
                     brlist.DataValueField = "brid";
                     brlist.DataBind();
-                    //mcatdroplist.Items.Insert(0,new ListItem("-select-","0"));
+                    brlist.Items.Insert(0,new ListItem("-select-","0"));
                 }
                 conn.Close();
             }
@@ -67,34 +93,14 @@ namespace E_commerce.admin
                     catlist.DataTextField = "catname";
                     catlist.DataValueField = "catid";
                     catlist.DataBind();
-                    //mcatdroplist.Items.Insert(0,new ListItem("-select-","0"));
+                    catlist.Items.Insert(0,new ListItem("-select-","0"));
                 }
                 conn.Close();
             }
 
         }
 
-        private void Bindsubcategory()
-        {
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                SqlCommand viewdata = new SqlCommand("select * from subcategory", conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                if (dataTable.Rows.Count != 0)
-                {
-                    subcatlist.DataSource = dataTable;
-                    subcatlist.DataTextField = "subcatname";
-                    subcatlist.DataValueField = "subcatid";
-                    subcatlist.DataBind();
-                    //mcatdroplist.Items.Insert(0,new ListItem("-select-","0"));
-                }
-                conn.Close();
-            }
-
-        }
+        
 
         private void Bindgender()
         {
@@ -111,12 +117,38 @@ namespace E_commerce.admin
                     genlist.DataTextField = "genname";
                     genlist.DataValueField = "genid";
                     genlist.DataBind();
-                    //mcatdroplist.Items.Insert(0,new ListItem("-select-","0"));
+                    genlist.Items.Insert(0,new ListItem("-select-","0"));
                 }
                 conn.Close();
             }
 
         }
 
+        protected void catlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int maincatid = Convert.ToInt32(catlist.SelectedItem.Value);
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand viewdata = new SqlCommand("select * from subcategory where maincatid= '"+catlist.SelectedItem.Value+"' ", conn);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
+                
+                DataTable dataTable = new DataTable();
+                
+                adapter.Fill(dataTable);
+                
+                if (dataTable.Rows.Count != 0)
+                {
+                    subcatlist.DataSource = dataTable;
+                    subcatlist.DataTextField = "subcatname";
+                    subcatlist.DataValueField = "subcatid";
+                    subcatlist.DataBind();
+                    subcatlist.Items.Insert(0, new ListItem("-select-", "0"));
+                }
+                conn.Close();
+            }
+
+        }
     }
 }
