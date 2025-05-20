@@ -69,7 +69,7 @@ namespace E_commerce.admin
                     mcatdroplist.DataTextField = "catname";
                     mcatdroplist.DataValueField = "catid";
                     mcatdroplist.DataBind();
-                        }
+                }
                 conn.Close ();
             }
 
