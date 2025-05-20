@@ -35,19 +35,21 @@
                                 <asp:Label runat="server" ID="username" Text="" class="nav-link active " aria-current="page"></asp:Label>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active text-white    " aria-current="page" href="adminhomepage.aspx">Home</a>
+                                <a class="nav-link active text-white" aria-current="page" href="adminhomepage.aspx">Home</a>
                             </li>
 
                             <!-- Products Dropdown with Submenu -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-white" href="addproduct.aspx"  role="button"
-                                     aria-expanded="false">Products
+                                <a class="nav-link text-white" href="addproduct.aspx" role="button"
+                                    aria-expanded="false">Products
                                 </a>
-                               
 
 
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="addcategory.aspx">Category</a>
+                                </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="addproduct.aspx">Manage</a>
+                                <a class="nav-link text-white" href="#">Manage</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="../sign_out.aspx">Sign-Out</a>

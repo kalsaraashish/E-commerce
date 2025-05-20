@@ -33,13 +33,31 @@ namespace E_commerce.admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator r1;
 
         /// <summary>
-        /// btnLogin control.
+        /// catbtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Button catbtn;
+
+        /// <summary>
+        /// mcatdroplist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList mcatdroplist;
+
+        /// <summary>
+        /// checkmaincat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator checkmaincat;
 
         /// <summary>
         /// subcatname control.
@@ -60,12 +78,12 @@ namespace E_commerce.admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// Button1 control.
+        /// subcatbtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button subcatbtn;
     }
 }
