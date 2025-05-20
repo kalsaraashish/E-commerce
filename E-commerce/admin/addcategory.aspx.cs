@@ -31,6 +31,7 @@ namespace E_commerce.admin
                 SqlCommand insertcmd = new SqlCommand("insert into category(catname) values('" + cname.Text + "')", conn);
                 insertcmd.ExecuteNonQuery();
                 Response.Write("<script>alert('Category added successfully!');</script>");
+
                 cname.Text = string.Empty;
                 cname.Focus();
                 conn.Close();

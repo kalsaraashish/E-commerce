@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="admin\addbrand.aspx" />
     <Content Include="admin\addcategory.aspx" />
+    <Content Include="admin\addgender.aspx" />
     <Content Include="admin\addproduct.aspx" />
     <Content Include="admin\adminhomepage.aspx" />
     <Content Include="App_Data\ShopZone.mdf" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="admin\addcategory.aspx.designer.cs">
       <DependentUpon>addcategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\addgender.aspx.cs">
+      <DependentUpon>addgender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\addgender.aspx.designer.cs">
+      <DependentUpon>addgender.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\addproduct.aspx.cs">
       <DependentUpon>addproduct.aspx</DependentUpon>
