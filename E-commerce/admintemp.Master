@@ -44,13 +44,17 @@
                                     aria-expanded="false">Products
                                 </a>
 
-                                
+
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="addbrand.aspx">Brand</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="addcategory.aspx">Category</a>
-                                </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="addcategory.aspx">Category</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="addsize.aspx">Size</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Manage</a>
                             </li>

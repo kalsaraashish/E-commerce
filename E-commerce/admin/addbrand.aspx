@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container d-flex justify-content-center align-items-center fade-in" style="height: 77vh;">
-        <div class="card shadow p-4 rounded-4" style="width: 100%; max-width: 400px;">
+    <div class="container py-5 my-5 d-flex justify-content-center align-items-center fade-in">
+        <div  style="width: 100%; max-width: 400px;">
             <h2 class="text-center mb-4">Add Brand</h2>
             <asp:Label ID="lblMessage" runat="server" CssClass="alert alert-danger d-none" EnableViewState="false" />
             <div class="mb-3">

@@ -71,6 +71,7 @@
     <Content Include="admin\addcategory.aspx" />
     <Content Include="admin\addgender.aspx" />
     <Content Include="admin\addproduct.aspx" />
+    <Content Include="admin\addsize.aspx" />
     <Content Include="admin\adminhomepage.aspx" />
     <Content Include="App_Data\ShopZone.mdf" />
     <Content Include="App_Data\ShopZone_log.ldf">
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="admin\addproduct.aspx.designer.cs">
       <DependentUpon>addproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\addsize.aspx.cs">
+      <DependentUpon>addsize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\addsize.aspx.designer.cs">
+      <DependentUpon>addsize.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\adminhomepage.aspx.cs">
       <DependentUpon>adminhomepage.aspx</DependentUpon>
