@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>ShopZon - Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Custom CSS -->

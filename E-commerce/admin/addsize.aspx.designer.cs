@@ -105,12 +105,12 @@ namespace E_commerce.admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator r4;
 
         /// <summary>
-        /// subcatbtn control.
+        /// btnsize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button subcatbtn;
+        protected global::System.Web.UI.WebControls.Button btnsize;
     }
 }

@@ -68,11 +68,11 @@ namespace E_commerce.admin
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                SqlCommand viewdata = new SqlCommand("select * from category",conn);
+                SqlCommand viewdata = new SqlCommand("select * from category", conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();  
+                DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                if (dataTable.Rows.Count !=0)
+                if (dataTable.Rows.Count != 0)
                 {
                     mcatdroplist.DataSource = dataTable;
                     mcatdroplist.DataTextField = "catname";
@@ -80,9 +80,9 @@ namespace E_commerce.admin
                     mcatdroplist.DataBind();
                     //mcatdroplist.Items.Insert(0,new ListItem("-select-","0"));
                 }
-                conn.Close ();
+                conn.Close();
             }
 
-            }
+        }
     }
 }
