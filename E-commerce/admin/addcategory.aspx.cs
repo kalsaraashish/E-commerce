@@ -13,7 +13,10 @@ namespace E_commerce.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Bindmaincat();
+            if (!IsPostBack)
+            {
+                Bindmaincat();
+            }
         }
         string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
 
@@ -37,20 +40,25 @@ namespace E_commerce.admin
 
         protected void subcatbtn_Click(object sender, EventArgs e)
         {
-           
 
+            if (mcatdroplist.SelectedValue == "0")
+            {
+                Response.Write("<script>alert('Please select a valid category.');</script>");
+                return;
+            }
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
 
-                SqlCommand insertcmd = new SqlCommand("insert into subcategory(subcatname,maincatid) values('" + subcatname.Text + "','"+mcatdroplist.SelectedItem.Value+"')", conn);
-                insertcmd.ExecuteNonQuery();
+                SqlCommand insertcatcmd = new SqlCommand("insert into subcategory(subcatname,maincatid) values('" + subcatname.Text + "','" + mcatdroplist.SelectedItem.Value + "')", conn);
+
+                insertcatcmd.ExecuteNonQuery();
                 Response.Write("<script>alert('SubCategory added successfully!');</script>");
-                
+
                 subcatname.Text = string.Empty;
                 mcatdroplist.ClearSelection();
-                mcatdroplist.Items.FindByValue("0").Selected = true;
-               
+                //mcatdroplist.Items.FindByValue("0").Selected = true;
+
                 conn.Close();
             }
         }
@@ -69,6 +77,7 @@ namespace E_commerce.admin
                     mcatdroplist.DataTextField = "catname";
                     mcatdroplist.DataValueField = "catid";
                     mcatdroplist.DataBind();
+                    //mcatdroplist.Items.Insert(0,new ListItem("-select-","0"));
                 }
                 conn.Close ();
             }

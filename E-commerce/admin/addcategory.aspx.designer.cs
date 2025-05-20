@@ -51,15 +51,6 @@ namespace E_commerce.admin
         protected global::System.Web.UI.WebControls.DropDownList mcatdroplist;
 
         /// <summary>
-        /// checkmaincat control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator checkmaincat;
-
-        /// <summary>
         /// subcatname control.
         /// </summary>
         /// <remarks>
@@ -69,13 +60,13 @@ namespace E_commerce.admin
         protected global::System.Web.UI.WebControls.TextBox subcatname;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// subcatbtn control.
