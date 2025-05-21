@@ -23,30 +23,42 @@
         </div>
 
         <!-- Brand List Table -->
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>#</th>
-                        <th>Brand Name</th>
-                        <th>Date Added</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Example static row (replace with dynamic data binding) -->
-                    <tr>
-                        <td>1</td>
-                        <td>Nike</td>
-                        <td>2025-05-01</td>
-                        <td>
-                            <button class="btn btn-sm btn-warning me-1">Edit</button>
-                            <button class="btn btn-sm btn-danger">Delete</button>
-                        </td>
-                    </tr>
+        <asp:Repeater ID="rp" runat="server">
+            <HeaderTemplate>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="table-ligt">
+                            <tr>
+                                <th>Sr no.</th>
+                                <th>Brand Name</th>
+                                <th>Added Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            </HeaderTemplate>
+
+            <ItemTemplate>
+
+                <tr>
+                    <td><%# Eval("brid") %></td>
+                    <td><%# Eval("name") %></td>
+                    <td><%# Eval("date") %></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-1">Edit</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </ItemTemplate>
+
+            <FooterTemplate>
                 </tbody>
-            </table>
-        </div>
+    </table>
+</div>
+            </FooterTemplate>
+
+
+        </asp:Repeater>
 
     </div>
 

@@ -16,6 +16,8 @@ namespace E_commerce.admin
             if (!IsPostBack)
             {
                 Bindmaincat();
+                Bindcategorydata();
+                Bindsubcategorydata();
             }
         }
         string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
@@ -59,7 +61,7 @@ namespace E_commerce.admin
                 subcatname.Text = string.Empty;
                 mcatdroplist.ClearSelection();
                 //mcatdroplist.Items.FindByValue("0").Selected = true;
-
+                Response.Redirect("~/admin/addcategory.aspx");
                 conn.Close();
             }
         }
@@ -83,6 +85,34 @@ namespace E_commerce.admin
                 conn.Close();
             }
 
+        }
+        private void Bindcategorydata()
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand viewdata = new SqlCommand("select * from category", conn);
+                SqlDataAdapter da = new SqlDataAdapter(viewdata);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                rp.DataSource = dt;
+                rp.DataBind();
+                conn.Close();
+            }
+        }
+        private void Bindsubcategorydata()
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand viewdata = new SqlCommand("select c.*, s.* from subcategory s inner join category c on c.catid=s.maincatid", conn);
+                SqlDataAdapter da = new SqlDataAdapter(viewdata);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                rp2.DataSource = dt;
+                rp2.DataBind();
+                conn.Close();
+            }
         }
     }
 }

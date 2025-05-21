@@ -14,22 +14,43 @@ namespace E_commerce.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Bindtabledata();
+            }
         }
-        
+        // Connection string to the database
+        string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
+
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
+
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
 
-                SqlCommand insertcmd = new SqlCommand("insert into brand(name) values('"+brname.Text+"')", conn);
+                SqlCommand insertcmd = new SqlCommand("insert into brand(name,date) values('" + brname.Text + "',GETDATE())", conn);
                 insertcmd.ExecuteNonQuery();
                 Response.Write("<script>alert('Brand added successfully!');</script>");
                 brname.Text = string.Empty;
                 brname.Focus();
+                conn.Close();
+            }
+        }
+        private void Bindtabledata()
+        {
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from brand", conn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                rp.DataSource = dt;
+                rp.DataBind();
                 conn.Close();
             }
         }
