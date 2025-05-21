@@ -85,10 +85,10 @@
                 <tr>
                     <td><%# Eval("sid") %></td>
                     <td><%# Eval("sizename") %></td>
-                    <td><%# Eval("brid") %></td>
-                    <td><%# Eval("catid") %></td>
-                    <td><%# Eval("subcatid") %></td>
-                    <td><%# Eval("genid") %></td>
+                    <td><%# Eval("name") %></td>
+                    <td><%# Eval("catname") %></td>
+                    <td><%# Eval("subcatname") %></td>
+                    <td><%# Eval("genname") %></td>
                     <td>
                         <button class="btn btn-sm btn-primary me-1">Edit</button>
                         <button class="btn btn-sm btn-danger">Delete</button>

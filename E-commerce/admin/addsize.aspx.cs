@@ -31,7 +31,7 @@ namespace E_commerce.admin
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                SqlCommand viewdata = new SqlCommand("select A.* from sizees A inner join category B on B.catId= A.catId inner join brand C on c.brid=A.brid  inner join subcategory D on D.subcatId=A.subcatid inner join gender E on E.genId=A.genid", conn);
+                SqlCommand viewdata = new SqlCommand("select A.*,B.*,C.*,D.*,E.* from sizees A inner join brand B on B.brid= A.brid inner join category C on c.catId=A.catid  inner join subcategory D on D.subcatId=A.subcatid inner join gender E on E.genId=A.genid", conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
