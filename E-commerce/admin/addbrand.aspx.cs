@@ -37,6 +37,7 @@ namespace E_commerce.admin
                 brname.Text = string.Empty;
                 brname.Focus();
                 conn.Close();
+                Bindtabledata();
             }
         }
         private void Bindtabledata()
