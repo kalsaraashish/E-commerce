@@ -15,8 +15,12 @@ namespace E_commerce.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Bindgender();
+            }
 
-        }
+            }
         string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -31,6 +35,22 @@ namespace E_commerce.admin
 
                 gname.Text = string.Empty;
                 gname.Focus();
+                conn.Close();
+                Bindgender();
+            }
+        }
+
+        private void Bindgender()
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("select * from gender", conn);
+                SqlDataAdapter da =new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                gen.DataSource = dt;
+                gen.DataBind();
                 conn.Close();
             }
         }

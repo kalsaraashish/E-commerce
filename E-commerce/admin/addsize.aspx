@@ -5,8 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-   <%-- <div class="container d-flex justify-content-center align-items-center fade-in" style="height: 77vh;">--%>
-    <div class="container d-flex justify-content-center align-items-center fade-in">
+
+     <div class="container fade-in">
+    <div class="container d-flex justify-content-center align-items-left fade-in">
 
         <div class=" p-4 rounded-4" style="width: 100%; max-width: 400px;">
 
@@ -57,9 +58,54 @@
             </div>
 
         </div>
-            
-    </div>
+           </div>
+                <!-- Size Table -->
+        <asp:Repeater ID="sizerp" runat="server">
+            <HeaderTemplate>
+                <div class="table-responsive">
+                    <h2 class="text-left mb-4">All Sizes Name :</h2>
+                    <hr />
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead class="table-ligt">
+                            <tr>
+                                <th>Sr no.</th>
+                                <th>Size Name</th>
+                                <th>Brand Name</th>
+                                <th>Category Name</th>
+                                <th>Subcategory Name</th>
+                                <th>Gender Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            </HeaderTemplate>
+
+            <ItemTemplate>
+
+                <tr>
+                    <td><%# Eval("sid") %></td>
+                    <td><%# Eval("sizename") %></td>
+                    <td><%# Eval("brid") %></td>
+                    <td><%# Eval("catid") %></td>
+                    <td><%# Eval("subcatid") %></td>
+                    <td><%# Eval("genid") %></td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-1">Edit</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </ItemTemplate>
+
+            <FooterTemplate>
+                </tbody>
+    </table>
+</div>
+            </FooterTemplate>
 
 
+        </asp:Repeater>
+   
+
+         </div>
         
 </asp:Content>

@@ -26,6 +26,8 @@
         <asp:Repeater ID="rp" runat="server">
             <HeaderTemplate>
                 <div class="table-responsive">
+                    <h2 class="text-left mb-4">Brand Name :</h2>
+                    <hr />
                     <table class="table table-bordered table-striped table-hover">
                         <thead class="table-ligt">
                             <tr>

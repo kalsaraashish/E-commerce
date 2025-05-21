@@ -20,10 +20,26 @@ namespace E_commerce.admin
                 Bindbrand();
                 Bindcategory();
                 Bindgender();
+                Bindsize();
             }
         }
 
         string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
+
+        private void Bindsize()
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand viewdata = new SqlCommand("select A.* from sizees A inner join category B on B.catId= A.catId inner join brand C on c.brid=A.brid  inner join subcategory D on D.subcatId=A.subcatid inner join gender E on E.genId=A.genid", conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                sizerp.DataSource = dataTable;
+                sizerp.DataBind();
+                conn.Close();
+            }
+        }
 
         protected void btnsize_Click(object sender, EventArgs e)
         {
@@ -40,20 +56,20 @@ namespace E_commerce.admin
                     sizename.Text = string.Empty;
 
                     brlist.ClearSelection();
-                    brlist.Items.FindByValue("0").Selected= true;
+                    brlist.Items.FindByValue("0").Selected = true;
 
                     catlist.ClearSelection();
-                    catlist.Items.FindByValue("0").Selected= true;
+                    catlist.Items.FindByValue("0").Selected = true;
 
                     subcatlist.ClearSelection();
-                    subcatlist.Items.FindByValue("0").Selected= true;
-                     
+                    subcatlist.Items.FindByValue("0").Selected = true;
+
                     genlist.ClearSelection();
-                    genlist.Items.FindByValue("0").Selected= true;
+                    genlist.Items.FindByValue("0").Selected = true;
 
+                    
                 }
-
-               
+                Bindsize();
             }
             }
 
