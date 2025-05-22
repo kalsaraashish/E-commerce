@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <div class="container mt-5">
+    <div class="container mt-5 fade-in">
         <h2 class="mb-4">Product Details</h2>
         <div class="mb-3">
             <label for="txtDescription" class="form-label">Product Name</label>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-4">
                 <label for="ddlCategory" class="form-label">Category</label>
-                <asp:DropDownList ID="category" runat="server" CssClass="form-select"></asp:DropDownList>
+                <asp:DropDownList ID="category" runat="server" CssClass="form-select" OnSelectedIndexChanged="category_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>
             </div>
             <div class="col-md-4">
                 <label for="ddlSubCategory" class="form-label">Subcategory</label>
@@ -38,14 +38,18 @@
             <div class="col-md-4">
                 <label for="dize" class="form-label">Size</label>
                 <asp:DropDownList ID="size" runat="server" CssClass="form-select">
-                    <asp:ListItem Text="Select Size" Value="" />
-                    <asp:ListItem Text="Small" Value="S" />
-                    <asp:ListItem Text="Medium" Value="M" />
-                    <asp:ListItem Text="Large" Value="L" />
-                    <asp:ListItem Text="XL" Value="XL" />
+                    
                 </asp:DropDownList>
             </div>
+            <div class="col-md-4">
+    <label for="gender" class="form-label">Gender</label>
+    <asp:DropDownList ID="gen" runat="server" CssClass="form-select">
+        
+    </asp:DropDownList>
+</div>
         </div>
+
+      
 
         <div class="mb-3">
             <label for="txtDescription" class="form-label">Description</label>
