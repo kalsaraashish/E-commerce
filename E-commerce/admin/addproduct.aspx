@@ -9,7 +9,7 @@
         <h2 class="mb-4">Product Details</h2>
         <div class="mb-3">
             <label for="txtDescription" class="form-label">Product Name</label>
-            <asp:TextBox ID="pname" runat="server" CssClass="form-control" ></asp:TextBox>
+            <asp:TextBox ID="pname" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="mb-3">
             <label for="txtDescription" class="form-label">Price</label>
@@ -22,34 +22,37 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="ddlBrand" class="form-label">Brand</label>
-                <asp:DropDownList ID="brand" runat="server" CssClass="form-select"></asp:DropDownList>
+                <asp:DropDownList ID="brand" runat="server" CssClass="form-select" ></asp:DropDownList>
             </div>
             <div class="col-md-4">
                 <label for="ddlCategory" class="form-label">Category</label>
-                <asp:DropDownList ID="category" runat="server" CssClass="form-select" OnSelectedIndexChanged="category_SelectedIndexChanged" AutoPostBack="true" ></asp:DropDownList>
+                <asp:DropDownList ID="category" runat="server" CssClass="form-select" OnSelectedIndexChanged="category_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
             </div>
             <div class="col-md-4">
                 <label for="ddlSubCategory" class="form-label">Subcategory</label>
-                <asp:DropDownList ID="subcategory" runat="server" CssClass="form-select"></asp:DropDownList>
+                <asp:DropDownList ID="subcategory" runat="server" CssClass="form-select" AutoPostBack="True" OnSelectedIndexChanged="subcategory_SelectedIndexChanged"></asp:DropDownList>
             </div>
         </div>
 
         <div class="row mb-3">
+
             <div class="col-md-4">
-                <label for="dize" class="form-label">Size</label>
-                <asp:DropDownList ID="size" runat="server" CssClass="form-select">
-                    
+                <label for="gender" class="form-label">Gender</label>
+                <asp:DropDownList ID="gen" runat="server" CssClass="form-select" AutoPostBack="True" OnSelectedIndexChanged="gen_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
+
             <div class="col-md-4">
-    <label for="gender" class="form-label">Gender</label>
-    <asp:DropDownList ID="gen" runat="server" CssClass="form-select">
-        
-    </asp:DropDownList>
-</div>
+                <label for="dize" class="form-label">Size</label>
+                <asp:CheckBoxList ID="sizeList" runat="server" CssClass="form-check">
+    
+</asp:CheckBoxList>
+
+              
+            </div>
         </div>
 
-      
+
 
         <div class="mb-3">
             <label for="txtDescription" class="form-label">Description</label>
@@ -99,7 +102,7 @@
             <label class="form-check-label" for="chkCOD">Cash On Delivery (COD)</label>
         </div>
 
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary"  />
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" />
     </div>
 
 

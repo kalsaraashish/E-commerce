@@ -69,15 +69,6 @@ namespace E_commerce.admin
         protected global::System.Web.UI.WebControls.DropDownList subcategory;
 
         /// <summary>
-        /// size control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList size;
-
-        /// <summary>
         /// gen control.
         /// </summary>
         /// <remarks>
@@ -85,6 +76,15 @@ namespace E_commerce.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList gen;
+
+        /// <summary>
+        /// sizeList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList sizeList;
 
         /// <summary>
         /// description control.
