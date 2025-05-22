@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -239,8 +240,69 @@ namespace E_commerce.admin
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                SqlCommand viewdata = new SqlCommand("",conn);
+                SqlCommand indata = new SqlCommand("sp_Insertproduct",conn);
+                indata.CommandType=CommandType.StoredProcedure;
+                indata.Parameters.AddWithValue("@pname", pname.Text);
+                indata.Parameters.AddWithValue("@price", price.Text);
+                indata.Parameters.AddWithValue("@pselprice", sprice.Text);
+                indata.Parameters.AddWithValue("@pbrandid", brand.SelectedItem.Value);
+                indata.Parameters.AddWithValue("@pcatid", category.SelectedItem.Value);
+                indata.Parameters.AddWithValue("@psubcatid", subcategory.SelectedItem.Value);
+                indata.Parameters.AddWithValue("@pgenid", gen.SelectedItem.Value);
+                indata.Parameters.AddWithValue("@pdiscription", description.Text);
+                indata.Parameters.AddWithValue("@productdetails", productdetails.Text);
+                indata.Parameters.AddWithValue("@matcare", materialcare.Text);
+
+                //1 is for true and 0 is for false
+                if (chkFreeDelivery.Checked = true)
+                {
+                    indata.Parameters.AddWithValue("@freedelivery", 1.ToString());
+                }
+                else
+                {
+                    indata.Parameters.AddWithValue("@freedelivery", 0.ToString());
+                }
+                if (chk30DayReturn.Checked = true)
+                {
+                    indata.Parameters.AddWithValue("@chk30DayReturn", 1.ToString());
+                }
+                else
+                {
+                    indata.Parameters.AddWithValue("@chk30DayReturn", 0.ToString());
+                }
+                if (chkCOD.Checked = true)
+                {
+                    indata.Parameters.AddWithValue("@chkCOD", 1.ToString());
+                }
+                else
+                {
+                    indata.Parameters.AddWithValue("@chkCOD", 0.ToString());
+                }
+                conn.Open();
+
+                conn.Close();
             }
+                //            create procedure sp_Insertproduct
+                //(
+                //@pname nvarchar(500),
+                //@price money,
+                //@pselprice money,
+                //@pbrandid int,
+                //@pcatid int,
+                //@psubcatid int,
+                //@pgenid int,
+                //@pdiscription nvarchar(500),
+                //@productdetails nvarchar(500),
+                //@matcare nvarchar(500),
+                //@freedelivery int,
+                //@chk30DayReturn int,
+                //@chkCOD int
+                //)
+                //as
+                //insert into products values(@pname, @price, @pselprice, @pbrandid, @pcatid, @psubcatid, @pgenid, @pdiscription, @productdetails, @matcare, @freedelivery, @chk30DayReturn,
+                //@chkCOD);
+                //            select SCOPE_IDENTITY()
+                //return 0;
         }
     }
 }
