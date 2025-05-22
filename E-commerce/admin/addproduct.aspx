@@ -102,7 +102,7 @@
             <label class="form-check-label" for="chkCOD">Cash On Delivery (COD)</label>
         </div>
 
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" />
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
     </div>
 
 

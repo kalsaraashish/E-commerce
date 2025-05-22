@@ -155,42 +155,6 @@ namespace E_commerce.admin
         }
 
 
-
-        protected void gen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                SqlCommand viewdata = new SqlCommand("SELECT * FROM sizees WHERE brid= @brid AND catid= @catid AND subcatid= @subcatid AND genid= @genid", conn);
-                viewdata.Parameters.AddWithValue("@brid", brand.SelectedItem.Value);
-                viewdata.Parameters.AddWithValue("@catid", category.SelectedItem.Value);
-                viewdata.Parameters.AddWithValue("@subcatid", subcategory.SelectedItem.Value);
-                viewdata.Parameters.AddWithValue("@genid", gen.SelectedItem.Value);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count > 0)
-                {
-                    sizeList.DataSource = dataTable;
-                    sizeList.DataTextField = "sizename";
-                    sizeList.DataValueField = "sid";
-                    sizeList.DataBind();
-                }
-                else
-                {
-                    sizeList.Items.Clear();
-                }
-
-                conn.Close();
-            }
-        }
-
-
-
-
-
         protected void subcategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (subcategory.SelectedIndex != 0)
@@ -202,9 +166,7 @@ namespace E_commerce.admin
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT DISTINCT g.genid, g.genname FROM gender g " +
-                        "INNER JOIN sizees s ON g.genid = s.genid " +
-                        "WHERE s.brid = @brid AND s.catid = @catid AND s.subcatid = @subcatid", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT DISTINCT g.genid, g.genname FROM gender g " + "INNER JOIN sizees s ON g.genid = s.genid " + "WHERE s.brid = @brid AND s.catid = @catid AND s.subcatid = @subcatid", conn);
 
                     cmd.Parameters.AddWithValue("@brid", brand.SelectedValue);
                     cmd.Parameters.AddWithValue("@catid", category.SelectedValue);
@@ -241,5 +203,44 @@ namespace E_commerce.admin
             sizeList.Items.Clear(); // Clear size if subcategory is changed
         }
 
+        protected void gen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand viewdata = new SqlCommand("SELECT * FROM sizees WHERE brid= @brid AND catid= @catid AND subcatid= @subcatid AND genid= @genid", conn);
+                viewdata.Parameters.AddWithValue("@brid", brand.SelectedItem.Value);
+                viewdata.Parameters.AddWithValue("@catid", category.SelectedItem.Value);
+                viewdata.Parameters.AddWithValue("@subcatid", subcategory.SelectedItem.Value);
+                viewdata.Parameters.AddWithValue("@genid", gen.SelectedItem.Value);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    sizeList.DataSource = dataTable;
+                    sizeList.DataTextField = "sizename";
+                    sizeList.DataValueField = "sid";
+                    sizeList.DataBind();
+                }
+                else
+                {
+                    sizeList.Items.Clear();
+                }
+
+                conn.Close();
+            }
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand viewdata = new SqlCommand("",conn);
+            }
+        }
     }
 }
