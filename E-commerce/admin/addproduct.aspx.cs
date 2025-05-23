@@ -282,21 +282,85 @@ namespace E_commerce.admin
 
                 if (fuImage1.HasFile)
                 {
-                    //string savepath = Server.MapPath("../img/productimg/")+PID;
-                    //string savepath = Server.MapPath("~/img/productimg/")+PID;
-                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/")+ PID);
+                    string extension = Path.GetExtension(fuImage1.PostedFile.FileName).ToLower();
+                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"), PID.ToString());
                     if (!Directory.Exists(folderPath))
                     {
                         Directory.CreateDirectory(folderPath);
                     }
-                    string extension = Path.GetExtension(fuImage1.PostedFile.FileName).ToLower();
+               
                     string fileName = pname.Text.Trim() + "01" + extension;
                     string fullPath = Path.Combine(folderPath, fileName);
 
-                    //fuImage1.SaveAs(fullPath);
-                    //fuImage1.SaveAs(folderPath + "\\" + pname.Text.ToString().Trim() + "01");
+                    fuImage1.SaveAs(fullPath);
+                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    insetimg.Parameters.AddWithValue("@PID", PID);
+                    insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
+                    insetimg.Parameters.AddWithValue("@Extension", extension);
+                    insetimg.ExecuteNonQuery();
+                
+                }
 
-                    //SqlCommand insetimg = new SqlCommand("insert into productimages values('"+PID+"','"+pname.Text.ToString().Trim()+"01"+"','"+ extension + "')", conn);
+                //second image
+
+                if (fuImage2.HasFile)
+                {
+                    string extension = Path.GetExtension(fuImage2.PostedFile.FileName).ToLower();
+                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"), PID.ToString());
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+                    string fileName = pname.Text.Trim() + "01" + extension;
+                    string fullPath = Path.Combine(folderPath, fileName);
+
+                    fuImage2.SaveAs(fullPath);
+                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    insetimg.Parameters.AddWithValue("@PID", PID);
+                    insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
+                    insetimg.Parameters.AddWithValue("@Extension", extension);
+                    insetimg.ExecuteNonQuery();
+   
+                }
+
+                //third image
+
+                if (fuImage3.HasFile)
+                {
+                    string extension = Path.GetExtension(fuImage3.PostedFile.FileName).ToLower();
+                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"), PID.ToString());
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+                    string fileName = pname.Text.Trim() + "01" + extension;
+                    string fullPath = Path.Combine(folderPath, fileName);
+
+                    fuImage3.SaveAs(fullPath);
+                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    insetimg.Parameters.AddWithValue("@PID", PID);
+                    insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
+                    insetimg.Parameters.AddWithValue("@Extension", extension);
+                    insetimg.ExecuteNonQuery();
+    
+                }
+                //fourth image
+
+                if (fuImage4.HasFile)
+                {
+                    string extension = Path.GetExtension(fuImage4.PostedFile.FileName).ToLower();
+                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"), PID.ToString());
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+                    string fileName = pname.Text.Trim() + "01" + extension;
+                    string fullPath = Path.Combine(folderPath, fileName);
+
+                    fuImage4.SaveAs(fullPath);
                     SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
                     insetimg.Parameters.AddWithValue("@PID", PID);
                     insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
@@ -304,7 +368,6 @@ namespace E_commerce.admin
                     insetimg.ExecuteNonQuery();
                     Response.Write("<script>alert('Product added successfully');</script>");
                 }
-
 
                 conn.Close();
            
