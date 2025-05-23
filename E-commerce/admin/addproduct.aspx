@@ -6,6 +6,7 @@
 
 
     <div class="container mt-5 fade-in">
+        
         <h2 class="mb-4">Product Details</h2>
         <div class="mb-3">
             <label for="txtDescription" class="form-label">Product Name</label>
