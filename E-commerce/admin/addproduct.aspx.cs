@@ -7,11 +7,10 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml.Linq;
+
 
 namespace E_commerce.admin
 {
@@ -293,7 +292,7 @@ namespace E_commerce.admin
                     string fullPath = Path.Combine(folderPath, fileName);
 
                     fuImage1.SaveAs(fullPath);
-                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, imgname, extension) VALUES (@PID, @ImageName, @Extension)", conn);
                     insetimg.Parameters.AddWithValue("@PID", PID);
                     insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
                     insetimg.Parameters.AddWithValue("@Extension", extension);
@@ -312,11 +311,11 @@ namespace E_commerce.admin
                         Directory.CreateDirectory(folderPath);
                     }
 
-                    string fileName = pname.Text.Trim() + "01" + extension;
+                    string fileName = pname.Text.Trim() + "02" + extension;
                     string fullPath = Path.Combine(folderPath, fileName);
 
                     fuImage2.SaveAs(fullPath);
-                    SqlCommand insetimg2 = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    SqlCommand insetimg2 = new SqlCommand("INSERT INTO productimages (pid, imgname, extension) VALUES (@PID, @ImageName, @Extension)", conn);
                     insetimg2.Parameters.AddWithValue("@PID", PID);
                     insetimg2.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "02");
                     insetimg2.Parameters.AddWithValue("@Extension", extension);
@@ -335,11 +334,11 @@ namespace E_commerce.admin
                         Directory.CreateDirectory(folderPath);
                     }
 
-                    string fileName = pname.Text.Trim() + "01" + extension;
+                    string fileName = pname.Text.Trim() + "03" + extension;
                     string fullPath = Path.Combine(folderPath, fileName);
 
                     fuImage3.SaveAs(fullPath);
-                    SqlCommand insetimg3 = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    SqlCommand insetimg3 = new SqlCommand("INSERT INTO productimages (pid, imgname, extension) VALUES (@PID, @ImageName, @Extension)", conn);
                     insetimg3.Parameters.AddWithValue("@PID", PID);
                     insetimg3.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "03");
                     insetimg3.Parameters.AddWithValue("@Extension", extension);
@@ -357,11 +356,11 @@ namespace E_commerce.admin
                         Directory.CreateDirectory(folderPath);
                     }
 
-                    string fileName = pname.Text.Trim() + "01" + extension;
+                    string fileName = pname.Text.Trim() + "04" + extension;
                     string fullPath = Path.Combine(folderPath, fileName);
 
                     fuImage4.SaveAs(fullPath);
-                    SqlCommand insetimg4 = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    SqlCommand insetimg4 = new SqlCommand("INSERT INTO productimages (pid, imgname, extension) VALUES (@PID, @ImageName, @Extension)", conn);
                     insetimg4.Parameters.AddWithValue("@PID", PID);
                     insetimg4.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "04");
                     insetimg4.Parameters.AddWithValue("@Extension", extension);
