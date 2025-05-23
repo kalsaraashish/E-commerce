@@ -316,11 +316,11 @@ namespace E_commerce.admin
                     string fullPath = Path.Combine(folderPath, fileName);
 
                     fuImage2.SaveAs(fullPath);
-                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
-                    insetimg.Parameters.AddWithValue("@PID", PID);
-                    insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
-                    insetimg.Parameters.AddWithValue("@Extension", extension);
-                    insetimg.ExecuteNonQuery();
+                    SqlCommand insetimg2 = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    insetimg2.Parameters.AddWithValue("@PID", PID);
+                    insetimg2.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "02");
+                    insetimg2.Parameters.AddWithValue("@Extension", extension);
+                    insetimg2.ExecuteNonQuery();
    
                 }
 
@@ -339,11 +339,11 @@ namespace E_commerce.admin
                     string fullPath = Path.Combine(folderPath, fileName);
 
                     fuImage3.SaveAs(fullPath);
-                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
-                    insetimg.Parameters.AddWithValue("@PID", PID);
-                    insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
-                    insetimg.Parameters.AddWithValue("@Extension", extension);
-                    insetimg.ExecuteNonQuery();
+                    SqlCommand insetimg3 = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    insetimg3.Parameters.AddWithValue("@PID", PID);
+                    insetimg3.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "03");
+                    insetimg3.Parameters.AddWithValue("@Extension", extension);
+                    insetimg3.ExecuteNonQuery();
     
                 }
                 //fourth image
@@ -361,13 +361,25 @@ namespace E_commerce.admin
                     string fullPath = Path.Combine(folderPath, fileName);
 
                     fuImage4.SaveAs(fullPath);
-                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
-                    insetimg.Parameters.AddWithValue("@PID", PID);
-                    insetimg.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "01");
-                    insetimg.Parameters.AddWithValue("@Extension", extension);
-                    insetimg.ExecuteNonQuery();
+                    SqlCommand insetimg4 = new SqlCommand("INSERT INTO productimages (pid, name, extension) VALUES (@PID, @ImageName, @Extension)", conn);
+                    insetimg4.Parameters.AddWithValue("@PID", PID);
+                    insetimg4.Parameters.AddWithValue("@ImageName", pname.Text.Trim() + "04");
+                    insetimg4.Parameters.AddWithValue("@Extension", extension);
+                    insetimg4.ExecuteNonQuery();
                     Response.Write("<script>alert('Product added successfully');</script>");
                 }
+                pname.Text = string.Empty;
+                price.Text = string.Empty;
+                sprice.Text = string.Empty;
+                description.Text = string.Empty;
+                productdetails.Text = string.Empty;
+                materialcare.Text = string.Empty;
+                pquantity.Text = string.Empty;
+                chkFreeDelivery.Checked = false;
+                chk30DayReturn.Checked = false;
+                chkCOD.Checked = false;
+                brand.SelectedIndex = 0;
+                category.SelectedIndex = 0;
 
                 conn.Close();
            

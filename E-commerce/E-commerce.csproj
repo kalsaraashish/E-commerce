@@ -193,10 +193,18 @@
     <Compile Include="userhomepage.aspx.designer.cs">
       <DependentUpon>userhomepage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="usertemplate.Master.cs">
+      <DependentUpon>usertemplate.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usertemplate.Master.designer.cs">
+      <DependentUpon>usertemplate.Master</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="admintemp.Master" />
     <None Include="packages.config" />
+    <Content Include="usertemplate.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
