@@ -22,7 +22,7 @@
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="ddlBrand" class="form-label">Brand</label>
-                <asp:DropDownList ID="brand" runat="server" CssClass="form-select" ></asp:DropDownList>
+                <asp:DropDownList ID="brand" runat="server" CssClass="form-select"></asp:DropDownList>
             </div>
             <div class="col-md-4">
                 <label for="ddlCategory" class="form-label">Category</label>
@@ -45,11 +45,12 @@
             <div class="col-md-4">
                 <label for="dize" class="form-label">Size</label>
                 <asp:CheckBoxList ID="sizeList" runat="server" CssClass="form-check">
-    
-</asp:CheckBoxList>
-
-              
+                </asp:CheckBoxList>
             </div>
+                    <div class="col-md-4">
+            <label for="pquantity" class="form-label">Product Quantity</label>
+            <asp:TextBox ID="pquantity" runat="server" CssClass="form-control"></asp:TextBox>
+        </div>
         </div>
 
 

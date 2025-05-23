@@ -240,7 +240,7 @@ namespace E_commerce.admin
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                SqlCommand indata = new SqlCommand("sp_Insertproduct",conn);
+                SqlCommand indata = new SqlCommand("sp_Insertproduct", conn);
                 indata.CommandType=CommandType.StoredProcedure;
                 indata.Parameters.AddWithValue("@pname", pname.Text);
                 indata.Parameters.AddWithValue("@price", price.Text);
@@ -254,33 +254,22 @@ namespace E_commerce.admin
                 indata.Parameters.AddWithValue("@matcare", materialcare.Text);
 
                 //1 is for true and 0 is for false
-                if (chkFreeDelivery.Checked = true)
-                {
-                    indata.Parameters.AddWithValue("@freedelivery", 1.ToString());
-                }
-                else
-                {
-                    indata.Parameters.AddWithValue("@freedelivery", 0.ToString());
-                }
-                if (chk30DayReturn.Checked = true)
-                {
-                    indata.Parameters.AddWithValue("@chk30DayReturn", 1.ToString());
-                }
-                else
-                {
-                    indata.Parameters.AddWithValue("@chk30DayReturn", 0.ToString());
-                }
-                if (chkCOD.Checked = true)
-                {
-                    indata.Parameters.AddWithValue("@chkCOD", 1.ToString());
-                }
-                else
-                {
-                    indata.Parameters.AddWithValue("@chkCOD", 0.ToString());
-                }
-                conn.Open();
+                indata.Parameters.AddWithValue("@freedelivery", chkFreeDelivery.Checked ? "1" : "0");
+                indata.Parameters.AddWithValue("@chk30DayReturn", chk30DayReturn.Checked ? "1" : "0");
+                indata.Parameters.AddWithValue("@chkCOD", chkCOD.Checked ? "1" : "0");
+                Int64 PID = Convert.ToInt64(indata.ExecuteScalar());
 
+
+                for(int i = 0; i < sizeList.Items.Count; i++)
+                {
+                    Int64 sid = Convert.ToInt64(sizeList.Items[i].Value);
+                    int qty = Convert.ToInt32(pquantity.Text);
+
+                    SqlCommand cmd = new SqlCommand("insert into pquantity values('"+PID+"','"+sid+"','"+qty+"')",conn);
+                    cmd.ExecuteNonQuery();
+                }
                 conn.Close();
+           
             }
                 //            create procedure sp_Insertproduct
                 //(
