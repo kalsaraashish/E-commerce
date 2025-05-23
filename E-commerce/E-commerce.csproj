@@ -91,6 +91,7 @@
     <Content Include="sign_out.aspx" />
     <Content Include="sign_up.aspx" />
     <Content Include="userhomepage.aspx" />
+    <Content Include="viewallproduct.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +200,13 @@
     </Compile>
     <Compile Include="usertemplate.Master.designer.cs">
       <DependentUpon>usertemplate.Master</DependentUpon>
+    </Compile>
+    <Compile Include="viewallproduct.aspx.cs">
+      <DependentUpon>viewallproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewallproduct.aspx.designer.cs">
+      <DependentUpon>viewallproduct.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
