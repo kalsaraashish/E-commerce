@@ -53,9 +53,14 @@ namespace E_commerce.admin
             {
                 conn.Open();
 
-                SqlCommand insertcatcmd = new SqlCommand("insert into subcategory(subcatname,maincatid) values('" + subcatname.Text + "','" + mcatdroplist.SelectedItem.Value + "')", conn);
 
+                SqlCommand insertcatcmd = new SqlCommand("insert into subcategory(subcatname,maincatid) values(@subcatname, @maincatid)", conn);
+                insertcatcmd.Parameters.AddWithValue("@subcatname", subcatname.Text);
+                insertcatcmd.Parameters.AddWithValue("@maincatid", mcatdroplist.SelectedItem.Value);
                 insertcatcmd.ExecuteNonQuery();
+
+
+                
                 Response.Write("<script>alert('SubCategory added successfully!');</script>");
 
                 subcatname.Text = string.Empty;

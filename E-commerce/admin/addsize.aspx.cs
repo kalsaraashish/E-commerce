@@ -40,19 +40,43 @@ namespace E_commerce.admin
                 conn.Close();
             }
         }
-
-        protected void btnsize_Click(object sender, EventArgs e)
+        private bool IsValidBrand(string brid)
         {
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 conn.Open();
-                SqlCommand insertdata = new SqlCommand("insert into sizees(sizename,brid,catid,subcatid,genid) values('" + sizename.Text + "','" + brlist.SelectedItem.Value + "','" + catlist.SelectedItem.Value + "','" + subcatlist.SelectedItem.Value+ "','"+genlist.SelectedItem.Value+"')", conn);
-                int a=insertdata.ExecuteNonQuery();
+                SqlCommand checkBrand = new SqlCommand("SELECT COUNT(*) FROM brand WHERE brid = @brid", conn);
+                checkBrand.Parameters.AddWithValue("@brid", brid);
+                int count = (int)checkBrand.ExecuteScalar();
+                conn.Close();
+                return count > 0;
+            }
+        }
+        protected void btnsize_Click(object sender, EventArgs e)
+        {
+            string brid = brlist.SelectedItem.Value;
+            if (!IsValidBrand(brid))
+            {
+                Response.Write("<script>alert('Invalid brand selected.');</script>");
+                return;
+            }
+            // Repeat similar checks for category, subcategory, and gender if needed
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                SqlCommand insertdata = new SqlCommand("insert into sizees(sizename,brid,catid,subcatid,genid) values(@sizename,@brid,@catid,@subcatid,@genid)", conn);
+                insertdata.Parameters.AddWithValue("@sizename", sizename.Text);
+                insertdata.Parameters.AddWithValue("@brid", brid);
+                insertdata.Parameters.AddWithValue("@catid", catlist.SelectedItem.Value);
+                insertdata.Parameters.AddWithValue("@subcatid", subcatlist.SelectedItem.Value);
+                insertdata.Parameters.AddWithValue("@genid", genlist.SelectedItem.Value);
+                int a = insertdata.ExecuteNonQuery();
                 conn.Close();
                 if (a > 0)
                 {
                     Response.Write("<script>alert('Size Added successfully!');</script>");
-
+                    // ... rest of your code
                     sizename.Text = string.Empty;
 
                     brlist.ClearSelection();
@@ -66,12 +90,12 @@ namespace E_commerce.admin
 
                     genlist.ClearSelection();
                     genlist.Items.FindByValue("0").Selected = true;
-
-                    
                 }
                 Bindsize();
             }
-            }
+        }
+
+        
 
         private void Bindbrand()
         {
