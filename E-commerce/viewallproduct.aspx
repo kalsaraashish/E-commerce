@@ -45,7 +45,7 @@
                             <p class="card-text"><%# Eval("pdescription") %></p>
 
                             <!-- Prices -->
-                            <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex justify-content-between   align-items-center mb-3">
                                 <span class="fw-bold text-danger"><%# Eval("price", "{0:0,00}") %></span>
                                 <span class="text-success text-decoration-line-through">(<%# Eval("DiscAmount", "{0:c}") %>off)</span>
                                 <span class="text-success text-decoration-through"><%# Eval("PSelPrice", "{0:c}") %></span>
