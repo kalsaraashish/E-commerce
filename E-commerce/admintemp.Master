@@ -66,8 +66,8 @@
                                 </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="../sign_out.aspx" id="productsDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">Sign-Out</a>
+                                <a class="nav-link text-white" href="../sign_out.aspx"  role="button"
+                                    >Sign-Out</a>
                             </li>
                         </ul>
 
