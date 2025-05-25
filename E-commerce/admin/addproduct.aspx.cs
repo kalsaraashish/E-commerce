@@ -381,7 +381,7 @@ namespace E_commerce.admin
                 category.SelectedIndex = 0;
                 subcategory.SelectedIndex = 0;
                 gen.SelectedIndex = 0;
-        
+                sizeList.SelectedIndex = 0;
 
                 conn.Close();
            

@@ -15,13 +15,16 @@
         <div class="row g-4">
             <asp:Repeater ID="rp1" runat="server">
                 <ItemTemplate>
+
                     <div class="col-md-4">
+                        <a href="viewproduct.aspx?pid=<%# Eval("pid") %>" style="text-decoration:none; color:black">
+
                         <div class="card h-100">
 
                             <img src='<%# ResolveUrl("img/productimg/"+Eval("pid")+"/"+Eval("imgname").ToString().Trim()+Eval("extension").ToString().Trim()) %>'
                                 class="card-img-top card-img"
                                 alt='<%# Eval("imgname").ToString().Trim() %>' />
-
+                          
                             <!-- Card Body -->
                             <div class="card-body">
                                 <!-- Brand Name -->
@@ -40,6 +43,7 @@
                                 <a href="#" class="btn btn-primary w-100">Buy Now</a>
                             </div>
                         </div>
+                              </a>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
