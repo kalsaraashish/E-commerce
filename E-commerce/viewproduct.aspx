@@ -77,11 +77,9 @@
                                 <asp:ListItem Text="L" Value="L"></asp:ListItem>--%>
                             </asp:RadioButtonList>
                         </p>
-
-                        <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="btn btn-primary mb-3" />
-
+                        <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="btn btn-primary mb-3" OnClick="btnAddToCart_Click"/>
+                        <asp:Label ID="errormessage" CssClass="text-danger" runat="server"></asp:Label>
                         <hr />
-
                         <h5>Description</h5>
                         <p>
                             <asp:Label ID="lblDescription" runat="server"><%# Eval("pdescription") %></asp:Label>

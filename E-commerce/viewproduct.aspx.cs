@@ -112,6 +112,58 @@ namespace E_commerce
 
             }
         }
+
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            string selectedsize= string.Empty;
+            foreach (RepeaterItem item in rpdetail.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                {
+                    var rblist = item.FindControl("rblSize") as RadioButtonList;
+                    selectedsize = rblist.SelectedValue;
+                    var errormessage= item.FindControl("errormessage") as Label;
+                    errormessage.Text = "";
+                    
+                }
+            }
+            if (selectedsize != "")
+            {
+                Int64 pid = Convert.ToInt64(Request.QueryString["pid"]);
+                if (Request.Cookies["cartpid"] != null)
+                {
+                    string cookiepid = Request.Cookies["cartpid"].Value.Split('=')[1];
+                    cookiepid = cookiepid + "," + pid + "-" + selectedsize;
+
+                    HttpCookie cartproducts = new HttpCookie("cartpid");
+                    cartproducts.Values["cartpid"] = pid.ToString();
+                    cartproducts.Expires = DateTime.Now.AddDays(30);
+                    Response.Cookies.Add(cartproducts);
+                }
+                else
+                {
+                    HttpCookie cartproducts = new HttpCookie("cartpid");
+
+                    cartproducts.Values["cartpid"] = pid.ToString() + "-" + selectedsize;
+                    cartproducts.Expires = DateTime.Now.AddDays(30);
+                    Response.Cookies.Add(cartproducts);
+                }
+            }
+            else
+            {
+                foreach (RepeaterItem item in rpdetail.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        //var rblist = item.FindControl("rblSize") as RadioButtonList;
+                        //selectedsize = rblist.SelectedValue;
+                        var errormessage = item.FindControl("errormessage") as Label;
+                        errormessage.Text = "Please select size";
+
+                    }
+                }
+            }
+        }
     }
 
     
