@@ -17,7 +17,7 @@
                     <asp:RequiredFieldValidator ID="r1" runat="server" ControlToValidate="brname" CssClass="text-danger" ErrorMessage="Enter Brand Name"></asp:RequiredFieldValidator>
                 </div>
                 <div class="d-grid">
-                    <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Add Brend" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
                 </div>
             </div>
         </div>
