@@ -44,15 +44,16 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">Products
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-
-                                    <!-- Men Category -->
-                                    <li class="dropdown-submenu">
-                                        <a class="dropdown-item dropdown-toggle" href="viewallproduct.aspx">Men</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Shirts</a></li>
-                                            <li><a class="dropdown-item" href="#">Pants</a></li>
-                                        </ul>
-                                    </li>
+                                    <li class="dropdowm-submenu">
+                                        <a class="dropdown-item " href="viewallproduct.aspx">All Product</a>
+                                        <!-- Men Category -->
+                                        <li class="dropdown-submenu">
+                                            <a class="dropdown-item dropdown-toggle" href="viewallproduct.aspx">Men</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Shirts</a></li>
+                                                <li><a class="dropdown-item" href="#">Pants</a></li>
+                                            </ul>
+                                        </li>
 
                                     <!-- Women Category -->
                                     <li class="dropdown-submenu">
@@ -68,7 +69,8 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Cart</a>
+                                <%--<a class="nav-link text-white" href="#">Cart</a>--%>
+                                <button class="nav-link text-white btn btn-primary" type="button">Cart<span class="badge">6</span></button>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="sign_out.aspx">Sign-Out</a>

@@ -47,9 +47,14 @@
                     <td><%# Eval("name") %></td>
                     <td><%# Eval("date") %></td>
                     <td>
-                        <button class="btn btn-sm btn-primary me-1">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <a href="editbrand.aspx?brid=<%# Eval("brid") %>" class="btn btn-primary btn-sm me-1">Edit
+                        </a>
+                        <a href="editbrand.aspx?brid=<%# Eval("brid") %>" class="btn btn-danger btn-sm me-1">Delete
+                        </a>
+
+
                     </td>
+
                 </tr>
             </ItemTemplate>
 

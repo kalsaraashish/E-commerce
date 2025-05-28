@@ -18,8 +18,14 @@ namespace E_commerce
             }
             else
             {
+                btnlogout.Visible= false;
                 Response.Redirect("sign_out.aspx");
             }
         }
+
+        protected void btnlogout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("sign_out.aspx");
+        }   
     }
 }

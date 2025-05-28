@@ -11,15 +11,15 @@ namespace E_commerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["username"] != null)
-            //{
+            if (Session["username"] != null)
+            {
 
-            //    username.Text = "Hello, " + Session["username"].ToString();
-            //}
-            //else
-            //{
-            //    Response.Redirect("sign_out.aspx");
-            //}
+                username.Text = "Hello, " + Session["username"].ToString();
+            }
+            else
+            {
+                Response.Redirect("sign_out.aspx");
+            }
         }
     }
 }
