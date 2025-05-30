@@ -17,8 +17,15 @@ namespace E_commerce.admin
         {
             if (!IsPostBack)
             {
-               
-                Bindbranddata();
+                if (Request.QueryString["msg"] == "success")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Brand updated successfully!');", true);
+                }
+                else if (Request.QueryString["msg"] == "error")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Error updating brand.');", true);
+                }
+            Bindbranddata();
             }
         }
         string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
