@@ -17,7 +17,7 @@
                     <asp:RequiredFieldValidator ID="r1" runat="server" ControlToValidate="brname" CssClass="text-danger" ErrorMessage="Enter Brand Name"></asp:RequiredFieldValidator>
                 </div>
                 <div class="d-grid">
-                    <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Add Brand" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     <td>
                         <a href="editbrand.aspx?brid=<%# Eval("brid") %>" class="btn btn-primary btn-sm me-1">Edit
                         </a>
-                        <a href="editbrand.aspx?brid=<%# Eval("brid") %>" class="btn btn-danger btn-sm me-1">Delete
+                        <a href="delete_brand.aspx?brid=<%# Eval("brid") %>" class="btn btn-danger btn-sm me-1">Delete
                         </a>
 
 

@@ -16,7 +16,19 @@ namespace E_commerce.admin
         {
             if (!IsPostBack)
             {
-                Bindtabledata();
+                if (Request.QueryString["msg"] == "success")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Brand updated successfully!');", true);
+                }
+                else if (Request.QueryString["msg"] == "error")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Error updating brand.');", true);
+                }
+                else if (Request.QueryString["msg"] == "successdelete")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Brand Deleted successfully!');", true);
+                }
+                    Bindtabledata();
             }
         }
         // Connection string to the database

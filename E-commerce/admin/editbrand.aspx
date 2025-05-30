@@ -9,11 +9,11 @@
          <h2 class="text-center mb-4">Edit Brand</h2>
          <asp:Label ID="lblMessage" runat="server" CssClass="alert alert-danger d-none" EnableViewState="false" />
          <div class="mb-3">
-             <asp:TextBox ID="brname" runat="server" CssClass="form-control" placeholder="Brand Name" />
-             <asp:RequiredFieldValidator ID="r1" runat="server" ControlToValidate="brname" CssClass="text-danger" ErrorMessage="Enter Brand Name"></asp:RequiredFieldValidator>
+             <asp:TextBox ID="bname" runat="server" CssClass="form-control" placeholder="Brand Name" />
+             <asp:RequiredFieldValidator ID="r1" runat="server" ControlToValidate="bname" CssClass="text-danger" ErrorMessage="Enter Brand Name"></asp:RequiredFieldValidator>
          </div>
          <div class="d-grid">
-             <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="btnLogin_Click"  />
+             <asp:Button ID="btnLogin" runat="server" Text="Edit Brand" CssClass="btn btn-primary" OnClick="btnLogin_Click"  />
          </div>
      </div>
  </div>

@@ -73,6 +73,7 @@
     <Content Include="admin\addproduct.aspx" />
     <Content Include="admin\addsize.aspx" />
     <Content Include="admin\adminhomepage.aspx" />
+    <Content Include="admin\delete_brand.aspx" />
     <Content Include="admin\editbrand.aspx" />
     <Content Include="App_Data\ShopZone.mdf" />
     <Content Include="App_Data\ShopZone_log.ldf">
@@ -145,6 +146,13 @@
     </Compile>
     <Compile Include="admin\adminhomepage.aspx.designer.cs">
       <DependentUpon>adminhomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\delete_brand.aspx.cs">
+      <DependentUpon>delete_brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\delete_brand.aspx.designer.cs">
+      <DependentUpon>delete_brand.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\editbrand.aspx.cs">
       <DependentUpon>editbrand.aspx</DependentUpon>
