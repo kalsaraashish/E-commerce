@@ -118,7 +118,7 @@
                     <td><%# Eval("catname") %></td>
 
                     <td>
-                        <a href="edit_subcategory.aspx?subcatid=<%# Eval("subcatid") %>" class="btn btn-primary btn-sm me-1">Edit
+                        <a href="edit_subcategory.aspx?subcatid=<%# Eval("subcatid") %>&catid=<%# Eval("catid") %>" class="btn btn-primary btn-sm me-1">Edit
                         </a>
                         <a href="delete_subcategory.aspx?subcatid=<%# Eval("subcatid") %>" class="btn btn-danger btn-sm me-1">Delete
                         </a>

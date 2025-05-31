@@ -77,6 +77,7 @@
     <Content Include="admin\delete_category.aspx" />
     <Content Include="admin\editbrand.aspx" />
     <Content Include="admin\edit_category.aspx" />
+    <Content Include="admin\edit_subcategory.aspx" />
     <Content Include="App_Data\ShopZone.mdf" />
     <Content Include="App_Data\ShopZone_log.ldf">
       <DependentUpon>ShopZone.mdf</DependentUpon>
@@ -176,6 +177,13 @@
     </Compile>
     <Compile Include="admin\edit_category.aspx.designer.cs">
       <DependentUpon>edit_category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit_subcategory.aspx.cs">
+      <DependentUpon>edit_subcategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit_subcategory.aspx.designer.cs">
+      <DependentUpon>edit_subcategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="forgot_password.aspx.cs">
       <DependentUpon>forgot_password.aspx</DependentUpon>
