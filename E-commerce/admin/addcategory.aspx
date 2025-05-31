@@ -74,8 +74,11 @@
                     <td><%# Eval("catname") %></td>
 
                     <td>
-                        <button class="btn btn-sm btn-primary me-1">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <a href="edit_category.aspx?catid=<%# Eval("catid") %>" class="btn btn-primary btn-sm me-1">Edit
+                        </a>
+                        <a href="delete_category.aspx?catid=<%# Eval("catid") %>" class="btn btn-danger btn-sm me-1">Delete
+                        </a>
+
                     </td>
                 </tr>
             </ItemTemplate>
@@ -89,44 +92,46 @@
         </asp:Repeater>
 
 
-         <!--- SubCategory table --->
- <asp:Repeater ID="rp2" runat="server">
-     <HeaderTemplate>
-         <h2 class="text-left mb-4">SubCategory Name :</h2>
-         <hr />
-         <div class="table-responsive">
-             <table class="table  table-bordered table-striped table-hover" >
-                 <thead class="table-ligt ">
-                     <tr>
-                         <th>Sr no.</th>
-                         <th>SubCategory Name</th>
-                         <th>Main Category</th>
-                         <th>Actions</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-     </HeaderTemplate>
+        <!--- SubCategory table --->
+        <asp:Repeater ID="rp2" runat="server">
+            <HeaderTemplate>
+                <h2 class="text-left mb-4">SubCategory Name :</h2>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table  table-bordered table-striped table-hover">
+                        <thead class="table-ligt ">
+                            <tr>
+                                <th>Sr no.</th>
+                                <th>SubCategory Name</th>
+                                <th>Main Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            </HeaderTemplate>
 
-     <ItemTemplate>
+            <ItemTemplate>
 
-         <tr>
-             <td><%# Eval("subcatid") %></td>
-             <td><%# Eval("subcatname") %></td>
-             <td><%# Eval("catname") %></td>
+                <tr>
+                    <td><%# Eval("subcatid") %></td>
+                    <td><%# Eval("subcatname") %></td>
+                    <td><%# Eval("catname") %></td>
 
-             <td>
-                 <button class="btn btn-sm btn-primary me-1">Edit</button>
-                 <button class="btn btn-sm btn-danger">Delete</button>
-             </td>
-         </tr>
-     </ItemTemplate>
+                    <td>
+                        <a href="edit_subcategory.aspx?subcatid=<%# Eval("subcatid") %>" class="btn btn-primary btn-sm me-1">Edit
+                        </a>
+                        <a href="delete_subcategory.aspx?subcatid=<%# Eval("subcatid") %>" class="btn btn-danger btn-sm me-1">Delete
+                        </a>
+                    </td>
+                </tr>
+            </ItemTemplate>
 
-     <FooterTemplate>
-         </tbody>
+            <FooterTemplate>
+                </tbody>
  </table>
  </div>
-     </FooterTemplate>
+            </FooterTemplate>
 
- </asp:Repeater>
+        </asp:Repeater>
     </div>
 </asp:Content>

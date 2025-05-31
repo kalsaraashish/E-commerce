@@ -15,6 +15,23 @@ namespace E_commerce.admin
         {
             if (!IsPostBack)
             {
+
+                if (Request.QueryString["msg"] == "success")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Category updated successfully!');", true);
+                }
+                else if (Request.QueryString["msg"] == "error")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Error updating Category.');", true);
+                }
+                else if(Request.QueryString["msg"] == "successdelete")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Category deleted successfully!');", true);
+                }
+                else if (Request.QueryString["msg"] == "errorcat")
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Error deleting Category.');", true);
+                }
                 Bindmaincat();
                 Bindcategorydata();
                 Bindsubcategorydata();
