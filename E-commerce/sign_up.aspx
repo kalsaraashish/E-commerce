@@ -31,39 +31,6 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Homepage.aspx">Home</a>
                         </li>
-
-                        <!-- Products Dropdown with Submenu -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="productsDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Products
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-
-                                <!-- Men Category -->
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Men</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Shirts</a></li>
-                                        <li><a class="dropdown-item" href="#">Pants</a></li>
-                                    </ul>
-                                </li>
-
-                                <!-- Women Category -->
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Women</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Tops</a></li>
-                                        <li><a class="dropdown-item" href="#">Leggings</a></li>
-                                        <li><a class="dropdown-item" href="#">Dresses</a></li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Cart</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="sign_in.aspx">Sign-In</a>
                         </li>

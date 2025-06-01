@@ -8,10 +8,22 @@
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet" />
-
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
     <!-- Bootstrap CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        $(document).ready(function myfunction() {
+            $("#btncart").click(function myfuction() {
+                window.location="cart.aspx"
+            });
+        });
+
+    </script>
 
 </head>
 <body>
@@ -28,7 +40,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                        <li class="nav-item">   
+                        <li class="nav-item">
                             <a class="nav-link active text-warning" aria-current="page" href="Homepage.aspx">Home</a>
                         </li>
 
@@ -61,13 +73,13 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item" >
-                            <a class="nav-link text-white" href="#">Cart</a>
-                        </li>
                         <li class="nav-item">
+                            <button id="btncart" class="nav-link text-white btn btn-primary" type="button">Cart<span class="badge" id="pcount" runat="server">6</span></button>
+                        </li>
+                        <li class="nav-item" id="btnsignin">
                             <a class="nav-link text-white" href="sign_in.aspx">Sign-In</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" id="btnsignup">
                             <a class="nav-link text-white" href="sign_up.aspx">Sign-Up</a>
                         </li>
                     </ul>
@@ -163,6 +175,8 @@
         <!-- Footer -->
         <footer class="bg-dark text-white text-center py-3 mt-5">
             &copy; 2025 ShopZone. All rights reserved.
+
+
         </footer>
     </form>
 </body>

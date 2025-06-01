@@ -11,6 +11,7 @@ namespace E_commerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Bindcartnumber();
             if (Session["username"] != null)
             {
 
@@ -26,6 +27,20 @@ namespace E_commerce
         protected void btnlogout_Click(object sender, EventArgs e)
         {
             Response.Redirect("sign_out.aspx");
-        }   
+        }
+        public void Bindcartnumber()
+        {
+            if (Request.Cookies["cartpid"] != null)
+            {
+                string cookiepid = Request.Cookies["cartpid"].Value.Split('=')[1];
+                string[] productArray = cookiepid.Split(',');
+                int productcount = productArray.Length;
+                pcount.InnerText = productcount.ToString();
+            }
+            else
+            {
+                pcount.InnerText = 0.ToString();
+            }
+        }
     }
 }
