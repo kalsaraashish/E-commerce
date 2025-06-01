@@ -75,8 +75,10 @@
     <Content Include="admin\adminhomepage.aspx" />
     <Content Include="admin\delete_brand.aspx" />
     <Content Include="admin\delete_category.aspx" />
+    <Content Include="admin\delete_gender.aspx" />
     <Content Include="admin\editbrand.aspx" />
     <Content Include="admin\edit_category.aspx" />
+    <Content Include="admin\edit_gender.aspx" />
     <Content Include="admin\edit_subcategory.aspx" />
     <Content Include="App_Data\ShopZone.mdf" />
     <Content Include="App_Data\ShopZone_log.ldf">
@@ -164,6 +166,13 @@
     <Compile Include="admin\delete_category.aspx.designer.cs">
       <DependentUpon>delete_category.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\delete_gender.aspx.cs">
+      <DependentUpon>delete_gender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\delete_gender.aspx.designer.cs">
+      <DependentUpon>delete_gender.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\editbrand.aspx.cs">
       <DependentUpon>editbrand.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -177,6 +186,13 @@
     </Compile>
     <Compile Include="admin\edit_category.aspx.designer.cs">
       <DependentUpon>edit_category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\edit_gender.aspx.cs">
+      <DependentUpon>edit_gender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\edit_gender.aspx.designer.cs">
+      <DependentUpon>edit_gender.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\edit_subcategory.aspx.cs">
       <DependentUpon>edit_subcategory.aspx</DependentUpon>

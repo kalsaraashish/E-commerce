@@ -23,7 +23,7 @@
             <HeaderTemplate>
                 <div class="table-responsive">
                     <h2 class="text-left mb-4">Gender Name :</h2>
-<hr />
+                    <hr />
                     <table class="table table-bordered table-striped table-hover">
                         <thead class="table-ligt">
                             <tr>
@@ -40,10 +40,12 @@
                 <tr>
                     <td><%# Eval("genid") %></td>
                     <td><%# Eval("genname") %></td>
-                   
+
                     <td>
-                        <button class="btn btn-sm btn-primary me-1">Edit</button>
-                        <button class="btn btn-sm btn-danger">Delete</button>
+                        <a href="edit_gender.aspx?genid=<%# Eval("genid") %>" class="btn btn-primary btn-sm me-1">Edit
+                        </a>
+                        <a href="delete_gender.aspx?genid=<%# Eval("genid") %>" class="btn btn-danger btn-sm me-1">Delete
+                        </a>
                     </td>
                 </tr>
             </ItemTemplate>
