@@ -84,6 +84,7 @@
     <Content Include="App_Data\ShopZone_log.ldf">
       <DependentUpon>ShopZone.mdf</DependentUpon>
     </Content>
+    <Content Include="cart.aspx" />
     <Content Include="css\style.css" />
     <Content Include="forgot_password.aspx" />
     <Content Include="Homepage.aspx" />
@@ -200,6 +201,13 @@
     </Compile>
     <Compile Include="admin\edit_subcategory.aspx.designer.cs">
       <DependentUpon>edit_subcategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="forgot_password.aspx.cs">
       <DependentUpon>forgot_password.aspx</DependentUpon>

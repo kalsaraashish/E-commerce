@@ -16,13 +16,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
         $(document).ready(function myfunction() {
             $("#btncart").click(function myfuction() {
                 window.location="cart.aspx"
             });
         });
-
     </script>
 
 </head>
@@ -97,21 +95,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="images/slide1.jpg" class="d-block w-100" alt="Slide 1">
+                    <img src="images/slide1.jpg" class="d-block w-100" alt="Slide 1" />
                     <div class="carousel-caption">
                         <h1>Welcome to ShopZone</h1>
                         <p>Your favorite online store!</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/slide2.jpg" class="d-block w-100" alt="Slide 2">
+                    <img src="images/slide2.jpg" class="d-block w-100" alt="Slide 2" />
                     <div class="carousel-caption">
                         <h5>Redmi A4 5G</h5>
                         <p>Starting 6,499</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="images/slide3.jpg" class="d-block w-100" alt="Slide 3">
+                    <img src="images/slide3.jpg" class="d-block w-100" alt="Slide 3" />
                     <div class="carousel-caption">
                         <h5>Toys And Games</h5>
                         <p>Under 499 And 5% CashBank</p>
@@ -129,12 +127,13 @@
         </div>
         <hr />
 
+
         <!-- Product Items Section -->
         <div class="container my-5 animate-on-load">
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card h-100">
-                        <img src="images/i1.png" class="card-img-top card-img" alt="Product 1">
+                        <img src="images/i1.png" class="card-img-top card-img" alt="Product 1" />
                         <div class="card-body">
                             <h5 class="card-title">Product Title</h5>
                             <p class="card-text">Short description of the product.</p>
@@ -146,7 +145,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card h-100">
-                        <img src="images/i2.jpg" class="card-img-top card-img" alt="Product 2">
+                        <img src="images/i2.jpg" class="card-img-top card-img" alt="Product 2" />
                         <div class="card-body">
                             <h5 class="card-title">Another Product</h5>
                             <p class="card-text">Great quality item with discount.</p>
@@ -158,7 +157,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card h-100">
-                        <img src="images/i1.png" class="card-img-top card-img" alt="Product 2">
+                        <img src="images/i1.png" class="card-img-top card-img" alt="Product 2" />
                         <div class="card-body">
                             <h5 class="card-title">Another Product</h5>
                             <p class="card-text">Great quality item with discount.</p>
@@ -172,11 +171,10 @@
             </div>
         </div>
 
+
         <!-- Footer -->
         <footer class="bg-dark text-white text-center py-3 mt-5">
             &copy; 2025 ShopZone. All rights reserved.
-
-
         </footer>
     </form>
 </body>

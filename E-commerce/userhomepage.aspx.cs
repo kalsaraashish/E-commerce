@@ -28,18 +28,40 @@ namespace E_commerce
         {
             Response.Redirect("sign_out.aspx");
         }
+        //public void Bindcartnumber()
+        //{
+        //    if (Request.Cookies["cartpid"] != null)
+        //    {
+        //        string cookiepid = Request.Cookies["cartpid"].Value.Split('=')[1];
+        //        string[] productArray = cookiepid.Split(',');
+        //        int productcount = productArray.Length;
+        //        pcount.InnerText = productcount.ToString();
+        //    }
+        //    else
+        //    {
+        //        pcount.InnerText = 0.ToString();
+        //    }
+        //}
         public void Bindcartnumber()
         {
             if (Request.Cookies["cartpid"] != null)
             {
-                string cookiepid = Request.Cookies["cartpid"].Value.Split('=')[1];
-                string[] productArray = cookiepid.Split(',');
-                int productcount = productArray.Length;
-                pcount.InnerText = productcount.ToString();
+                string[] splitCookie = Request.Cookies["cartpid"].Value.Split('=');
+                if (splitCookie.Length > 1)
+                {
+                    string cookiepid = splitCookie[1];
+                    string[] productArray = cookiepid.Split(',');
+                    int productcount = productArray.Length;
+                    pcount.InnerText = productcount.ToString();
+                }
+                else
+                {
+                    pcount.InnerText = "0";
+                }
             }
             else
             {
-                pcount.InnerText = 0.ToString();
+                pcount.InnerText = "0";
             }
         }
     }
