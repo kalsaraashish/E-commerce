@@ -47,7 +47,7 @@
                                 <asp:Label runat="server" ID="username" Text="" class="nav-link active " aria-current="page"></asp:Label>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active text-warning" aria-current="page" href="Homepage.aspx">Home</a>
+                                <a class="nav-link active text-warning" aria-current="page" href="userhomepage.aspx">Home</a>
                             </li>
 
                             <!-- Products Dropdown with Submenu -->

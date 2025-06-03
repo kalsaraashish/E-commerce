@@ -57,7 +57,10 @@
                                     <span class="text-danger fw-bold"><%# Eval("pselprice","{0:c}") %></span>
                                 </p>
                             </div>
-                            <asp:Button ID="btnRemove1" runat="server" CssClass="btn btn-sm btn-outline-danger" Text="Remove" OnClick="btnRemove1_Click"/>
+                            <%--<asp:Button ID="btnRemove1" runat="server" CssClass="btn btn-sm btn-outline-danger" Text="Remove" OnClick="btnRemove1_Click"/>--%>
+                             <asp:Button ID="btnRemove1" runat="server" Text="Remove" 
+                            CommandArgument='<%# Eval("pid") + "-" + Eval("sizeidd") %>' 
+                            OnClick="btnRemove1_Click" CssClass="btn btn-danger" />
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>

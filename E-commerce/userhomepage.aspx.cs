@@ -46,23 +46,16 @@ namespace E_commerce
         {
             if (Request.Cookies["cartpid"] != null)
             {
-                string[] splitCookie = Request.Cookies["cartpid"].Value.Split('=');
-                if (splitCookie.Length > 1)
-                {
-                    string cookiepid = splitCookie[1];
-                    string[] productArray = cookiepid.Split(',');
-                    int productcount = productArray.Length;
-                    pcount.InnerText = productcount.ToString();
-                }
-                else
-                {
-                    pcount.InnerText = "0";
-                }
+                string cookiepid = Request.Cookies["cartpid"].Value; // Correctly read the cookie
+                string[] productArray = cookiepid.Split(',');
+                int productcount = productArray.Length;
+                pcount.InnerText = productcount.ToString();
             }
             else
             {
                 pcount.InnerText = "0";
             }
         }
+
     }
 }
