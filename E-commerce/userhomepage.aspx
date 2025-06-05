@@ -9,20 +9,20 @@
 
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet" />
-      <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
     <!-- Bootstrap CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
 
-    $(document).ready(function myfunction() {
-        $("#btncart").click(function myfuction() {
-            window.location="cart.aspx"
+        $(document).ready(function myfunction() {
+            $("#btncart").click(function myfuction() {
+                window.location = "cart.aspx"
+            });
         });
-    });
 
     </script>
 </head>
@@ -52,27 +52,24 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">Products
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-                                <li class="dropdowm-submenu" >
+                                <li class="dropdowm-submenu">
                                     <a class="dropdown-item " href="viewallproduct.aspx">All Product</a>
                                 </li>
                                 <li role="separator" class="divider"></li>
                                 <!-- Men Category -->
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Men</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Shirts</a></li>
-                                        <li><a class="dropdown-item" href="#">Pants</a></li>
-                                    </ul>
+                                    <a class="dropdown-item" href="#">Men</a>
+
                                 </li>
 
                                 <!-- Women Category -->
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Women</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Tops</a></li>
-                                        <li><a class="dropdown-item" href="#">Leggings</a></li>
-                                        <li><a class="dropdown-item" href="#">Dresses</a></li>
-                                    </ul>
+                                    <a class="dropdown-item " href="#">Women</a>
+
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item " href="#">Electronics</a>
+
                                 </li>
 
                             </ul>
@@ -80,11 +77,11 @@
 
                         <li class="nav-item">
                             <%--<a class="nav-link text-white" href="#">Cart</a>--%>
-                              <button id="btncart" class="nav-link text-white btn btn-primary" type="button">Cart<span class="badge" id="pcount" runat="server"></span></button>
+                            <button id="btncart" class="nav-link text-white btn btn-primary" type="button">Cart<span class="badge" id="pcount" runat="server"></span></button>
                             <%--<a class="nav-link text-white" id="log_out" href="sign_out.aspx">Sign-Out</a>--%>
-                            </li>
+                        </li>
                         <li class="nav-item">
-                            <asp:Button ID="btnlogout" CssClass="nav-link text-white btn btn-default navbar-btn " runat="server" Text="Sign Out" OnClick="btnlogout_Click"/>
+                            <asp:Button ID="btnlogout" CssClass="nav-link text-white btn btn-default navbar-btn " runat="server" Text="Sign Out" OnClick="btnlogout_Click" />
 
                         </li>
                     </ul>

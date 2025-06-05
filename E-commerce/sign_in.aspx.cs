@@ -53,18 +53,32 @@ namespace E_commerce
                     Response.Cookies["pass"].Expires = DateTime.Now.AddHours(-1);
                 }
 
-                Session["username"] = username.Text;
+                
                 
                 string usertype = reader["usertype"].ToString().Trim().ToLower();
 
                 if (usertype == "user")
                 {
-                    Response.Redirect("~/userhomepage.aspx");
+                    Session["username"] = username.Text;
+                    if (Request.QueryString["rurl"] !=null)
+                    {
+                        if (Request.QueryString["rurl"] == "cart")
+                        { 
+                            Response.Redirect("~/cart.aspx");
+                        }
+                      
+                    }
+                    else
+                    {
+                        Response.Redirect("~/userhomepage.aspx");
+                        
+                    }
                 }
                 else
                 {
                     Response.Write(usertype);
                     Response.Redirect("~/admin/adminhomepage.aspx");
+                    Session["username"] = username.Text;
                 }
 
                 username.Text = string.Empty;

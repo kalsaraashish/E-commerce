@@ -73,18 +73,21 @@
                     <h5>Price Details</h5>
                     <div class="d-flex justify-content-between">
                         <span>Cart Total</span>
-                        <span id="spancarttotal" runat="server">$100</span>
+                        <span id="spancarttotal" runat="server"></span>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>Cart Discount</span>
-                        <span class="text-success" id="spandiscaunt" runat="server">- $10</span>
+                        <span class="text-success" id="spandiscaunt" runat="server"></span>
                     </div>
                     <hr />
                     <div class="d-flex justify-content-between fw-bold">
                         <span>Total</span>
-                        <span id="spantotal" runat="server">$90</span>
+                        <span id="spantotal" runat="server"></span>
                     </div>
-                    <asp:Button ID="btnBuyNow" runat="server" CssClass="btn btn-success mt-3 w-100" Text="Buy Now" OnClick="btnBuyNow_Click" />
+                    <asp:Button ID="btnBuyNow" runat="server" CssClass="btn btn-success mt-3 w-100" Text="Buy Now" OnClick="btnBuyNow_Click" CausesValidation="false"/>
+                    <!-- add CausesValidation="false" so it works even if you disable it -->
+
+
 
                 </div>
             </div>

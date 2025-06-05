@@ -94,6 +94,7 @@
     <Content Include="images\slide2.jpg" />
     <Content Include="images\slide3.jpg" />
     <Content Include="img\i1.png" />
+    <Content Include="orderplaced.aspx" />
     <Content Include="payment.aspx" />
     <Content Include="recoverpass.aspx" />
     <Content Include="sign_in.aspx" />
@@ -223,6 +224,13 @@
     </Compile>
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="orderplaced.aspx.cs">
+      <DependentUpon>orderplaced.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orderplaced.aspx.designer.cs">
+      <DependentUpon>orderplaced.aspx</DependentUpon>
     </Compile>
     <Compile Include="payment.aspx.cs">
       <DependentUpon>payment.aspx</DependentUpon>

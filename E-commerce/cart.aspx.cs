@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.SqlClient;
-using System.Data;
 
 namespace E_commerce
 {
@@ -23,82 +23,97 @@ namespace E_commerce
 
         private void Bindproductcart()
         {
-            if (Request.Cookies["cartpid"] != null)
+            if (Request.Cookies["cartpid"] == null || string.IsNullOrWhiteSpace(Request.Cookies["cartpid"].Value))
             {
-                DataTable dt = new DataTable();
-                string cookiedata = Request.Cookies["cartpid"].Value;
-                string[] cookiedataArray = cookiedata.Split(',');
+                ShowEmptyCart();
+                return;
+            }
 
-                if (cookiedataArray.Length > 0)
+            string[] items = Request.Cookies["cartpid"].Value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            if (items.Length == 0)
+            {
+                ShowEmptyCart();
+                return;
+            }
+
+            DataTable dt = new DataTable();
+            long mrpTotal = 0;
+            long saleTotal = 0;
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                con.Open();
+                foreach (string item in items)
                 {
-                    h3noitems.InnerText = "My Cart (" + cookiedataArray.Length + " Items)";
-                    Int64 carttotal = 0;
-                    Int64 total = 0;
+                    string[] parts = item.Split('-'); // Format: pid-sizeid
+                    if (parts.Length != 2) continue;
 
-                    for (int i = 0; i < cookiedataArray.Length; i++)
+                    using (SqlCommand cmd = new SqlCommand(@"
+                        SELECT A.*, 
+                               dbo.getsizename(@sid) AS sizenamee, 
+                               @sid AS sizeidd, 
+                               img.imgname, 
+                               img.extension
+                        FROM products A
+                        CROSS APPLY (
+                            SELECT TOP 1 B.imgname, B.extension 
+                            FROM productimages B 
+                            WHERE B.pid = A.pid
+                        ) img
+                        WHERE A.pid = @pid", con))
                     {
-                        string[] parts = cookiedataArray[i].Split('-');
-                        if (parts.Length != 2) continue; // skip invalid entries
+                        cmd.Parameters.AddWithValue("@sid", parts[1]);
+                        cmd.Parameters.AddWithValue("@pid", parts[0]);
 
-                        string pid = parts[0];
-                        string sizeid = parts[1];
-
-                        using (SqlConnection con = new SqlConnection(connStr))
-                        {
-                            using (SqlCommand view = new SqlCommand("SELECT A.*, dbo.getsizename(@sizeid) AS sizenamee, @sizeid AS sizeidd, sizeData.imgname, sizeData.extension FROM products A CROSS APPLY (SELECT TOP 1 B.imgname, B.extension FROM productimages B WHERE B.pid = A.pid) sizeData WHERE A.pid = @pid", con))
-                            {
-                                view.Parameters.AddWithValue("@sizeid", sizeid);
-                                view.Parameters.AddWithValue("@pid", pid);
-
-                                using (SqlDataAdapter sda = new SqlDataAdapter(view))
-                                {
-                                    sda.Fill(dt);
-                                }
-                            }
-                        }
-
-                        if (dt.Rows.Count > i)
-                        {
-                            carttotal += Convert.ToInt64(dt.Rows[i]["price"]);
-                            total += Convert.ToInt64(dt.Rows[i]["pselprice"]);
-                        }
+                        dt.Load(cmd.ExecuteReader());
                     }
-
-                    rpcart.DataSource = dt;
-                    rpcart.DataBind();
-                    rpcart.Visible = true;
-
-                    spancarttotal.InnerText = carttotal.ToString();
-                    spantotal.InnerText = "Rs. " + total.ToString();
-                    spandiscaunt.InnerText = "- " + (carttotal - total).ToString();
-                }
-                else
-                {
-                    h3noitems.InnerText = "Your shopping Cart is Empty";
-                    rpcart.Visible = false;
                 }
             }
-            else
+
+            if (dt.Rows.Count == 0)
             {
-                h3noitems.InnerText = "Your shopping Cart is Empty";
-                rpcart.Visible = false;
+                ShowEmptyCart();
+                return;
             }
+
+            foreach (DataRow r in dt.Rows)
+            {
+                mrpTotal += Convert.ToInt64(r["price"]);
+                saleTotal += Convert.ToInt64(r["pselprice"]);
+            }
+
+            rpcart.DataSource = dt;
+            rpcart.DataBind();
+            rpcart.Visible = true;
+
+            h3noitems.InnerText = "My Cart (" + dt.Rows.Count + " Items)";
+            spancarttotal.InnerText = "Rs. " + mrpTotal.ToString("N0");
+            spantotal.InnerText = "Rs. " + saleTotal.ToString("N0");
+            spandiscaunt.InnerText = "- Rs. " + (mrpTotal - saleTotal).ToString("N0");
+
+            btnBuyNow.Visible = true;
+        }
+
+        private void ShowEmptyCart()
+        {
+            h3noitems.InnerText = "Your shopping cart is empty";
+            rpcart.Visible = false;
+            btnBuyNow.Visible = false;
         }
 
         protected void btnRemove1_Click(object sender, EventArgs e)
         {
             HttpCookie cookie = Request.Cookies["cartpid"];
-
             if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
             {
-                string cookiepid = cookie.Value;
+                string cookieValue = cookie.Value;
                 Button btn = (Button)sender;
                 string pidsize = btn.CommandArgument;
 
-                List<string> pidList = cookiepid.Split(',')
-                                                .Select(i => i.Trim())
-                                                .Where(i => !string.IsNullOrEmpty(i))
-                                                .ToList();
+                List<string> pidList = cookieValue.Split(',')
+                                                  .Select(i => i.Trim())
+                                                  .Where(i => !string.IsNullOrEmpty(i))
+                                                  .ToList();
 
                 bool removed = pidList.Remove(pidsize);
 
@@ -114,6 +129,7 @@ namespace E_commerce
                         updatedCookie.Value = string.Join(",", pidList);
                         updatedCookie.Expires = DateTime.Now.AddDays(30);
                     }
+                    updatedCookie.Path = "/";
                     Response.Cookies.Add(updatedCookie);
                 }
 
