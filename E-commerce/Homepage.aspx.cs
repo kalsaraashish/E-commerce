@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -12,28 +14,32 @@ namespace E_commerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Bindcartnumber();
+            if (!IsPostBack)
+            {
+                Bindproduct();
+            }
 
         }
+        string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
+        private void Bindproduct()
+        {
 
-        //public void Bindcartnumber()
-        //{
-        //    if (Request.Cookies["cartpid"] != null)
-        //    {
-        //        //string cookiepid = Request.Cookies["cartpid"].Value.Split('=')[1];
-        //        //string[] productArray = cookiepid.Split(',');
-        //        //int productcount= productArray.Length;
-        //        //pcount.InnerText = productcount.ToString();
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("BindAllProducts", con))
+                {
 
-        //        string CookiePID = Request.Cookies["CartPID"].Value.Split('=')[1];
-        //        string[] ProductArray = CookiePID.Split(',');
-        //        int ProductCount = ProductArray.Length;
-        //        pcount.InnerText = ProductCount.ToString();
-        //    }
-        //    else
-        //    {
-        //        pcount.InnerText = 0.ToString();
-        //    }
-        //}
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+                        rp1.DataSource = dt;
+                        rp1.DataBind();
+                    }
+                }
+            }
+        }
+
     }
 }

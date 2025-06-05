@@ -57,7 +57,8 @@
                         </h3>
 
                         <p>
-                            <strong>Price:<%# Eval("price" ,"{0:c}") %></strong><asp:Label ID="lblPrice" runat="server" CssClass="text-decoration-line-through text-muted"><%# string.Format("{0}",Convert.ToInt64(Eval("price"))-Convert.ToInt64(Eval("pselprice"))) %></asp:Label>
+                            <strong>Price:<%# Eval("price" ,"{0:c}") %></strong>
+                            <asp:Label ID="lblPrice" runat="server" CssClass="text-decoration-line-through text-muted"><%# string.Format("{0}",Convert.ToInt64(Eval("price"))-Convert.ToInt64(Eval("pselprice"))) %></asp:Label>
                             <span class="text-danger">
                                 <asp:Label ID="lblDiscount" runat="server"></asp:Label>
                                 OFF

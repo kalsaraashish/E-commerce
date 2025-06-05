@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,6 +18,7 @@ namespace E_commerce
             {
 
                 username.Text = "Hello, "+Session["username"].ToString();
+                Bindproduct();
             }
             else
             {
@@ -28,20 +31,28 @@ namespace E_commerce
         {
             Response.Redirect("sign_out.aspx");
         }
-        //public void Bindcartnumber()
-        //{
-        //    if (Request.Cookies["cartpid"] != null)
-        //    {
-        //        string cookiepid = Request.Cookies["cartpid"].Value.Split('=')[1];
-        //        string[] productArray = cookiepid.Split(',');
-        //        int productcount = productArray.Length;
-        //        pcount.InnerText = productcount.ToString();
-        //    }
-        //    else
-        //    {
-        //        pcount.InnerText = 0.ToString();
-        //    }
-        //}
+
+        string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
+        private void Bindproduct()
+        {
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("BindAllProducts", con))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+                        rp1.DataSource = dt;
+                        rp1.DataBind();
+                    }
+                }
+            }
+        }
+
         public void Bindcartnumber()
         {
             if (Request.Cookies["cartpid"] != null)
@@ -56,6 +67,7 @@ namespace E_commerce
                 pcount.InnerText = "0";
             }
         }
+
 
     }
 }

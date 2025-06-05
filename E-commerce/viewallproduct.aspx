@@ -40,7 +40,7 @@
                                     <span class="text-success text-decoration-through"><%# Eval("PSelPrice", "{0:c}") %></span>
                                 </div>
                                 <!-- Buy Now Button -->
-                                <a href="#" class="btn btn-primary w-100">Buy Now</a>
+                                
                             </div>
                         </div>
                               </a>

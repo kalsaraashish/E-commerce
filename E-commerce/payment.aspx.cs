@@ -92,9 +92,6 @@ namespace E_commerce
                         }
                     }
 
-                    //rpcart.DataSource = dt;
-                    //rpcart.DataBind();
-                    //rpcart.Visible = true;
 
                     lblCartTotal.Text = carttotal.ToString();
                     lblTotalAmount.Text = "Rs. " + total.ToString();
@@ -108,8 +105,7 @@ namespace E_commerce
                 }
                 else
                 {
-                    //h3noitems.InnerText = "Your shopping Cart is Empty";
-                    //rpcart.Visible = false;
+                  
                     Response.Redirect("cart.aspx"); // Redirect to cart if no items
                 }
             }
@@ -145,6 +141,27 @@ namespace E_commerce
             {
                 using (SqlCommand insertpurchasedata = new SqlCommand("INSERT INTO purchase(userid,pidsizeid,cartamount,cartdiscount,totalpayed,paymenttype,paymentstatus,dateofpurchase,name,email,address,pincod,m_number) values(@userid,@pidsizeid,@cartamount,@cartdiscount,@totalpayed,@paymenttype,@paymentstatus,@dateofpurchase,@name,@email,@address,@pincod,@m_number)", con))
                 {
+                    string paymentType;
+                    string paymentStatus;   // so you can mark “Paid” for prepaid options
+
+                    if (rdoWallet.Checked)
+                    {
+                        paymentType = "Wallet";
+                        paymentStatus = "Paid";        // you typically grab money from wallet instantly
+                    }
+                    else if (rdoCard.Checked)
+                    {
+                        paymentType = "Credit/Debit Card";
+                        paymentStatus = "Paid";        // card gateway confirms right away
+                    }
+                    else                       // the only remaining possibility is COD
+                    {
+                        paymentType = "Cash on Delivery";
+                        paymentStatus = "Pending";
+                    }
+
+                    insertpurchasedata.Parameters.AddWithValue("@paymenttype", paymentType);
+                    insertpurchasedata.Parameters.AddWithValue("@paymentstatus", paymentStatus);
                     string username = Session["username"].ToString();
                     int userId = GetUserIdFromDatabase(username); // Implement this method to fetch the user ID
                     insertpurchasedata.Parameters.AddWithValue("@userid", userId);
@@ -155,8 +172,7 @@ namespace E_commerce
                     insertpurchasedata.Parameters.AddWithValue("@cartamount", hdcartamount.Value);
                     insertpurchasedata.Parameters.AddWithValue("@cartdiscount", cartDiscount);
                     insertpurchasedata.Parameters.AddWithValue("@totalpayed", totalPayed);
-                    insertpurchasedata.Parameters.AddWithValue("@paymenttype", "Cash on Delivery");
-                    insertpurchasedata.Parameters.AddWithValue("@paymentstatus", "Pending");
+                   
                     insertpurchasedata.Parameters.AddWithValue("@dateofpurchase", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     
                     insertpurchasedata.Parameters.AddWithValue("@name", username);
