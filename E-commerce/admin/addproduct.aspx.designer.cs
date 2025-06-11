@@ -15,6 +15,15 @@ namespace E_commerce.admin
     {
 
         /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form1;
+
+        /// <summary>
         /// pname control.
         /// </summary>
         /// <remarks>
@@ -78,22 +87,13 @@ namespace E_commerce.admin
         protected global::System.Web.UI.WebControls.DropDownList gen;
 
         /// <summary>
-        /// sizeList control.
+        /// gvSizes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList sizeList;
-
-        /// <summary>
-        /// pquantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox pquantity;
+        protected global::System.Web.UI.WebControls.GridView gvSizes;
 
         /// <summary>
         /// description control.

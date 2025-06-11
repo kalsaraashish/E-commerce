@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using Microsoft.SqlServer.Server;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
 namespace E_commerce.admin
 {
-    public partial class addproduct : System.Web.UI.Page
+    public partial class addproduct : Page
     {
+        private readonly string connStr =
+            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,385 +26,188 @@ namespace E_commerce.admin
                 gen.Enabled = false;
             }
         }
-        string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ShopZone.mdf;Integrated Security=True";
-
 
         private void Bindbrand()
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection con = new SqlConnection(connStr))
             {
-                conn.Open();
-                SqlCommand viewdata = new SqlCommand("select * from brand", conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                if (dataTable.Rows.Count != 0)
-                {
-                   brand.DataTextField = "name";
-                   brand.DataSource = dataTable;
-                   brand.DataValueField = "brid";
-                   brand.DataBind();
-                   brand.Items.Insert(0, new ListItem("-select-", "0"));
-                }
-                conn.Close();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM brand", con);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                brand.DataSource = rdr;
+                brand.DataTextField = "name";
+                brand.DataValueField = "brid";
+                brand.DataBind();
+                brand.Items.Insert(0, new ListItem("--Select Brand--", "0"));
+                con.Close();
             }
-
         }
 
         private void Bindcategory()
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection con = new SqlConnection(connStr))
             {
-                conn.Open();
-                SqlCommand viewdata = new SqlCommand("select * from category", conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                if (dataTable.Rows.Count != 0)
-                {
-                    category.DataSource = dataTable;
-                    category.DataTextField = "catname";
-                    category.DataValueField = "catid";
-                    category.DataBind();
-                    category.Items.Insert(0, new ListItem("-select-", "0"));
-                }
-                conn.Close();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM category", con);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                category.DataSource = rdr;
+                category.DataTextField = "catname";
+                category.DataValueField = "catid";
+                category.DataBind();
+                category.Items.Insert(0, new ListItem("--Select Category--", "0"));
+                con.Close();
             }
-
         }
+
         private void Bindgender()
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            using (SqlConnection con = new SqlConnection(connStr))
             {
-                conn.Open();
-                SqlCommand viewdata = new SqlCommand("select * from gender", conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                if (dataTable.Rows.Count != 0)
-                {
-                    gen.DataSource = dataTable;
-                    gen.DataTextField = "genname";
-                    gen.DataValueField = "genid";
-                    gen.DataBind();
-                    gen.Items.Insert(0, new ListItem("-select-", "0"));
-                }
-                conn.Close();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM gender", con);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                gen.DataSource = rdr;
+                gen.DataTextField = "genname";
+                gen.DataValueField = "genid";
+                gen.DataBind();
+                gen.Items.Insert(0, new ListItem("--Select Gender--", "0"));
+                con.Close();
             }
-
         }
-
-
-
 
         protected void category_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedCatId = Convert.ToInt32(category.SelectedValue);
-
-            if (selectedCatId == 0)
+            using (SqlConnection con = new SqlConnection(connStr))
             {
-                // Clear and disable subcategory and gender dropdowns
-                subcategory.Items.Clear();
-                subcategory.Items.Insert(0, new ListItem("-select-", "0"));
-                subcategory.Enabled = false;
-
-                gen.Items.Clear();
-                gen.Items.Insert(0, new ListItem("-select-", "0"));
-                gen.Enabled = false;
-
-                sizeList.Items.Clear(); // Also clear sizes if they were bound
-                return;
+                SqlCommand cmd = new SqlCommand("SELECT * FROM subcategory WHERE maincatid=@catid", con);
+                cmd.Parameters.AddWithValue("@catid", category.SelectedValue);
+                con.Open();
+                SqlDataReader rdr = cmd.ExecuteReader();
+                subcategory.DataSource = rdr;
+                subcategory.DataTextField = "subcatname";
+                subcategory.DataValueField = "subcatid";
+                subcategory.DataBind();
+                subcategory.Items.Insert(0, new ListItem("--Select Subcategory--", "0"));
+                subcategory.Enabled = true;
+                con.Close();
             }
-
-            // Load related subcategories
-            using (SqlConnection conn = new SqlConnection(connStr))
-            {
-                conn.Open();
-                SqlCommand viewdata = new SqlCommand("SELECT * FROM subcategory WHERE maincatid = @catid", conn);
-                viewdata.Parameters.AddWithValue("@catid", selectedCatId);
-
-                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count > 0)
-                {
-                    subcategory.DataSource = dataTable;
-                    subcategory.DataTextField = "subcatname";
-                    subcategory.DataValueField = "subcatid";
-                    subcategory.DataBind();
-                    subcategory.Items.Insert(0, new ListItem("-select-", "0"));
-                    subcategory.Enabled = true;
-                }
-                else
-                {
-                    subcategory.Items.Clear();
-                    subcategory.Items.Insert(0, new ListItem("-select-", "0"));
-                    subcategory.Enabled = false;
-                }
-
-                conn.Close();
-            }
-
-            // Reset other dependent fields
-            gen.Items.Clear();
-            gen.Items.Insert(0, new ListItem("-select-", "0"));
-            gen.Enabled = false;
-
-            sizeList.Items.Clear();
         }
-
 
         protected void subcategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (subcategory.SelectedIndex != 0)
-            {
-                gen.Enabled = true;
-
-                // Load gender based on current brand, category, and subcategory
-                using (SqlConnection conn = new SqlConnection(connStr))
-                {
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand("SELECT DISTINCT g.genid, g.genname FROM gender g " + "INNER JOIN sizees s ON g.genid = s.genid " + "WHERE s.brid = @brid AND s.catid = @catid AND s.subcatid = @subcatid", conn);
-
-                    cmd.Parameters.AddWithValue("@brid", brand.SelectedValue);
-                    cmd.Parameters.AddWithValue("@catid", category.SelectedValue);
-                    cmd.Parameters.AddWithValue("@subcatid", subcategory.SelectedValue);
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    if (dt.Rows.Count > 0)
-                    {
-                        gen.DataSource = dt;
-                        gen.DataTextField = "genname";
-                        gen.DataValueField = "genid";
-                        gen.DataBind();
-                        gen.Items.Insert(0, new ListItem("-select-", "0"));
-                    }
-                    else
-                    {
-                        gen.Items.Clear();
-                        gen.Items.Insert(0, new ListItem("-select-", "0"));
-                    }
-
-                    conn.Close();
-                }
-            }
-            else
-            {
-                gen.Enabled = false;
-                gen.Items.Clear();
-                gen.Items.Insert(0, new ListItem("-select-", "0"));
-            }
-
-            sizeList.Items.Clear(); // Clear size if subcategory is changed
+            gen.Enabled = true;
         }
 
         protected void gen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            gvSizes.DataSource = null;
+            gvSizes.DataBind();
+
+            using (SqlConnection con = new SqlConnection(connStr))
             {
-                conn.Open();
-                SqlCommand viewdata = new SqlCommand("SELECT * FROM sizees WHERE brid= @brid AND catid= @catid AND subcatid= @subcatid AND genid= @genid", conn);
-                viewdata.Parameters.AddWithValue("@brid", brand.SelectedItem.Value);
-                viewdata.Parameters.AddWithValue("@catid", category.SelectedItem.Value);
-                viewdata.Parameters.AddWithValue("@subcatid", subcategory.SelectedItem.Value);
-                viewdata.Parameters.AddWithValue("@genid", gen.SelectedItem.Value);
+                con.Open();
+                var cmd = new SqlCommand(
+                    @"SELECT sid, sizename FROM sizees 
+                      WHERE brid=@b AND catid=@c AND subcatid=@s AND genid=@g", con);
+                cmd.Parameters.AddWithValue("@b", brand.SelectedValue);
+                cmd.Parameters.AddWithValue("@c", category.SelectedValue);
+                cmd.Parameters.AddWithValue("@s", subcategory.SelectedValue);
+                cmd.Parameters.AddWithValue("@g", gen.SelectedValue);
 
-                SqlDataAdapter adapter = new SqlDataAdapter(viewdata);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                DataTable dt = new DataTable();
+                dt.Load(cmd.ExecuteReader());
 
-                if (dataTable.Rows.Count > 0)
-                {
-                    sizeList.DataSource = dataTable;
-                    sizeList.DataTextField = "sizename";
-                    sizeList.DataValueField = "sid";
-                    sizeList.DataBind();
-                }
-                else
-                {
-                    sizeList.Items.Clear();
-                }
-
-                conn.Close();
+                gvSizes.DataSource = dt;
+                gvSizes.DataKeyNames = new string[] { "sid" };
+                gvSizes.DataBind();
             }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(connStr))
+            long newPid;
+
+            using (SqlConnection con = new SqlConnection(connStr))
             {
-                conn.Open();
-                SqlCommand indata = new SqlCommand("sp_Insertproduct", conn);
-                indata.CommandType=CommandType.StoredProcedure;
-                indata.Parameters.AddWithValue("@pname", pname.Text);
-                indata.Parameters.AddWithValue("@price", price.Text);
-                indata.Parameters.AddWithValue("@pselprice", sprice.Text);
-                indata.Parameters.AddWithValue("@pbrandid", brand.SelectedItem.Value);
-                indata.Parameters.AddWithValue("@pcatid", category.SelectedItem.Value);
-                indata.Parameters.AddWithValue("@psubcatid", subcategory.SelectedItem.Value);
-                indata.Parameters.AddWithValue("@pgenid", gen.SelectedItem.Value);
-                indata.Parameters.AddWithValue("@pdiscription", description.Text);
-                indata.Parameters.AddWithValue("@productdetails", productdetails.Text);
-                indata.Parameters.AddWithValue("@matcare", materialcare.Text);
+                con.Open();
 
-                //1 is for true and 0 is for false
-                indata.Parameters.AddWithValue("@freedelivery", chkFreeDelivery.Checked ? "1" : "0");
-                indata.Parameters.AddWithValue("@chk30DayReturn", chk30DayReturn.Checked ? "1" : "0");
-                indata.Parameters.AddWithValue("@chkCOD", chkCOD.Checked ? "1" : "0");
-                Int64 PID = Convert.ToInt64(indata.ExecuteScalar());
+                SqlCommand sp = new SqlCommand("sp_Insertproduct", con);
+                sp.CommandType = CommandType.StoredProcedure;
+                sp.Parameters.AddWithValue("@pname", pname.Text);
+                sp.Parameters.AddWithValue("@price", price.Text);
+                sp.Parameters.AddWithValue("@pselprice", sprice.Text);
+                sp.Parameters.AddWithValue("@pbrandid", brand.SelectedValue);
+                sp.Parameters.AddWithValue("@pcatid", category.SelectedValue);
+                sp.Parameters.AddWithValue("@psubcatid", subcategory.SelectedValue);
+                sp.Parameters.AddWithValue("@pgenid", gen.SelectedValue);
+                sp.Parameters.AddWithValue("@pdiscription", description.Text);
+                sp.Parameters.AddWithValue("@productdetails", productdetails.Text);
+                sp.Parameters.AddWithValue("@matcare", materialcare.Text);
+                sp.Parameters.AddWithValue("@freedelivery", chkFreeDelivery.Checked ? 1 : 0);
+                sp.Parameters.AddWithValue("@chk30DayReturn", chk30DayReturn.Checked ? 1 : 0);
+                sp.Parameters.AddWithValue("@chkCOD", chkCOD.Checked ? 1 : 0);
 
+                newPid = Convert.ToInt64(sp.ExecuteScalar());
 
-
-
-                //insert quantity code
-                for(int i = 0; i < sizeList.Items.Count; i++)
+                foreach (GridViewRow row in gvSizes.Rows)
                 {
-                    if (sizeList.Items[i].Selected == true)
+                    var chk = (CheckBox)row.FindControl("chkSel");
+                    if (chk.Checked)
                     {
-                        Int64 sid = Convert.ToInt64(sizeList.Items[i].Value);
-                        int qty = Convert.ToInt32(pquantity.Text);
+                        int sid = Convert.ToInt32(gvSizes.DataKeys[row.RowIndex].Value);
+                        int qty = Convert.ToInt32(((TextBox)row.FindControl("txtQty")).Text);
 
-                        SqlCommand cmd = new SqlCommand("insert into pquantity values('" + PID + "','" + sid + "','" + qty + "')", conn);
-                        cmd.ExecuteNonQuery();
+                        SqlCommand qCmd = new SqlCommand(
+                            @"INSERT INTO pquantity (pid, sid, quantity)
+                              VALUES (@pid, @sid, @qty)", con);
+                        qCmd.Parameters.AddWithValue("@pid", newPid);
+                        qCmd.Parameters.AddWithValue("@sid", sid);
+                        qCmd.Parameters.AddWithValue("@qty", qty);
+                        qCmd.ExecuteNonQuery();
                     }
                 }
 
+                SaveProductImage(fuImage1, newPid, "01", con);
+                SaveProductImage(fuImage2, newPid, "02", con);
+                SaveProductImage(fuImage3, newPid, "03", con);
+                SaveProductImage(fuImage4, newPid, "04", con);
 
-                //inser product images
-
-                if (fuImage1.HasFile)
-                {
-                    string extension = Path.GetExtension(fuImage1.PostedFile.FileName).ToLower();
-                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"),PID.ToString());
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-               
-                    string fileName = pname.Text.Trim()+"01"+extension;
-                    string fullPath = Path.Combine(folderPath,fileName);
-
-                    fuImage1.SaveAs(fullPath);
-                    SqlCommand insetimg = new SqlCommand("INSERT INTO productimages (pid,imgname,extension) VALUES (@PID,@ImageName,@Extension)",conn);
-                    insetimg.Parameters.AddWithValue("@PID",PID);
-                    insetimg.Parameters.AddWithValue("@ImageName",pname.Text.Trim()+"01");
-                    insetimg.Parameters.AddWithValue("@Extension",extension);
-                    insetimg.ExecuteNonQuery();
-                
-                }
-
-                //second image
-
-                if (fuImage2.HasFile)
-                {
-                    string extension = Path.GetExtension(fuImage2.PostedFile.FileName).ToLower();
-                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"),PID.ToString());
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-
-                    string fileName = pname.Text.Trim()+"02"+extension;
-                    string fullPath = Path.Combine(folderPath,fileName);
-
-                    fuImage2.SaveAs(fullPath);
-                    SqlCommand insetimg2 = new SqlCommand("INSERT INTO productimages (pid,imgname,extension) VALUES (@PID,@ImageName,@Extension)", conn);
-                    insetimg2.Parameters.AddWithValue("@PID",PID);
-                    insetimg2.Parameters.AddWithValue("@ImageName",pname.Text.Trim()+"02");
-                    insetimg2.Parameters.AddWithValue("@Extension",extension);
-                    insetimg2.ExecuteNonQuery();
-   
-                }
-
-                //third image
-
-                if (fuImage3.HasFile)
-                {
-                    string extension = Path.GetExtension(fuImage3.PostedFile.FileName).ToLower();
-                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"),PID.ToString());
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-
-                    string fileName = pname.Text.Trim()+"03"+extension;
-                    string fullPath = Path.Combine(folderPath,fileName);
-
-                    fuImage3.SaveAs(fullPath);
-                    SqlCommand insetimg3 = new SqlCommand("INSERT INTO productimages (pid,imgname,extension) VALUES (@PID,@ImageName,@Extension)",conn);
-                    insetimg3.Parameters.AddWithValue("@PID",PID);
-                    insetimg3.Parameters.AddWithValue("@ImageName",pname.Text.Trim()+"03");
-                    insetimg3.Parameters.AddWithValue("@Extension",extension);
-                    insetimg3.ExecuteNonQuery();
-    
-                }
-                //fourth image
-
-                if (fuImage4.HasFile)
-                {
-                    string extension = Path.GetExtension(fuImage4.PostedFile.FileName).ToLower();
-                    string folderPath = Path.Combine(Server.MapPath("~/img/productimg/"),PID.ToString());
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-
-                    string fileName = pname.Text.Trim()+"04"+extension;
-                    string fullPath = Path.Combine(folderPath, fileName);
-
-                    fuImage4.SaveAs(fullPath);
-                    SqlCommand insetimg4 = new SqlCommand("INSERT INTO productimages (pid,imgname,extension) VALUES (@PID,@ImageName,@Extension)", conn);
-                    insetimg4.Parameters.AddWithValue("@PID",PID);
-                    insetimg4.Parameters.AddWithValue("@ImageName",pname.Text.Trim() + "04");
-                    insetimg4.Parameters.AddWithValue("@Extension",extension);
-                    insetimg4.ExecuteNonQuery();
-                    Response.Write("<script>alert('Product added successfully');</script>");
-                }
-                pname.Text = string.Empty;
-                price.Text = string.Empty;
-                sprice.Text = string.Empty;
-                description.Text = string.Empty;
-                productdetails.Text = string.Empty;
-                materialcare.Text = string.Empty;
-                pquantity.Text = string.Empty;
-                chkFreeDelivery.Checked = false;
-                chk30DayReturn.Checked = false;
-                chkCOD.Checked = false;
-                brand.SelectedIndex = 0;
-                category.SelectedIndex = 0;
-                subcategory.SelectedIndex = 0;
-                gen.SelectedIndex = 0;
-                sizeList.SelectedIndex = 0;
-
-                conn.Close();
-           
+                con.Close();
             }
-                //            create procedure sp_Insertproduct
-                //(
-                //@pname nvarchar(500),
-                //@price money,
-                //@pselprice money,
-                //@pbrandid int,
-                //@pcatid int,
-                //@psubcatid int,
-                //@pgenid int,
-                //@pdiscription nvarchar(500),
-                //@productdetails nvarchar(500),
-                //@matcare nvarchar(500),
-                //@freedelivery int,
-                //@chk30DayReturn int,
-                //@chkCOD int
-                //)
-                //as
-                //insert into products values(@pname, @price, @pselprice, @pbrandid, @pcatid, @psubcatid, @pgenid, @pdiscription, @productdetails, @matcare, @freedelivery, @chk30DayReturn,
-                //@chkCOD);
-                //            select SCOPE_IDENTITY()
-                //return 0;
+
+            ClientScript.RegisterStartupScript(GetType(), "ok",
+                "alert('Product added successfully');", true);
+            ClearForm();
+        }
+
+        private void SaveProductImage(FileUpload fu, long pid, string suffix, SqlConnection con)
+        {
+            if (!fu.HasFile) return;
+
+            string ext = Path.GetExtension(fu.FileName).ToLower();
+            string dir = Server.MapPath("~/img/productimg/" + pid);
+            Directory.CreateDirectory(dir);
+            string fname = pname.Text.Trim() + suffix + ext;
+            fu.SaveAs(Path.Combine(dir, fname));
+
+            var cmd = new SqlCommand(
+                "INSERT INTO productimages(pid, imgname, extension) VALUES(@p,@n,@e)", con);
+            cmd.Parameters.AddWithValue("@p", pid);
+            cmd.Parameters.AddWithValue("@n", pname.Text.Trim() + suffix);
+            cmd.Parameters.AddWithValue("@e", ext);
+            cmd.ExecuteNonQuery();
+        }
+
+        private void ClearForm()
+        {
+            foreach (var ctl in form1.Controls.OfType<TextBox>())
+                ctl.Text = string.Empty;
+
+            chkFreeDelivery.Checked = chk30DayReturn.Checked = chkCOD.Checked = false;
+            brand.SelectedIndex = category.SelectedIndex = subcategory.SelectedIndex =
+                gen.SelectedIndex = 0;
+            gvSizes.DataSource = null;
+            gvSizes.DataBind();
         }
     }
 }

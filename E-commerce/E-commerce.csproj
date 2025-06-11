@@ -76,6 +76,7 @@
     <Content Include="admin\delete_brand.aspx" />
     <Content Include="admin\delete_category.aspx" />
     <Content Include="admin\delete_gender.aspx" />
+    <Content Include="admin\delete_subcategory.aspx" />
     <Content Include="admin\editbrand.aspx" />
     <Content Include="admin\edit_category.aspx" />
     <Content Include="admin\edit_gender.aspx" />
@@ -175,6 +176,13 @@
     </Compile>
     <Compile Include="admin\delete_gender.aspx.designer.cs">
       <DependentUpon>delete_gender.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\delete_subcategory.aspx.cs">
+      <DependentUpon>delete_subcategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\delete_subcategory.aspx.designer.cs">
+      <DependentUpon>delete_subcategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\editbrand.aspx.cs">
       <DependentUpon>editbrand.aspx</DependentUpon>
