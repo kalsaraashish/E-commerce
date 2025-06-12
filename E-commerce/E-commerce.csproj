@@ -96,7 +96,6 @@
     <Content Include="images\slide1.jpg" />
     <Content Include="images\slide2.jpg" />
     <Content Include="images\slide3.jpg" />
-    <Content Include="img\i1.png" />
     <Content Include="menproduct.aspx" />
     <Content Include="orderplaced.aspx" />
     <Content Include="payment.aspx" />
