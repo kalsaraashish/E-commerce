@@ -11,25 +11,16 @@ namespace E_commerce.admin
 {
 
 
-    public partial class adminhomepage
+    public partial class delete_product
     {
 
         /// <summary>
-        /// userdata control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater userdata;
-
-        /// <summary>
-        /// pdata control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater pdata;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
     }
 }

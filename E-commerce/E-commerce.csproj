@@ -81,6 +81,8 @@
     <Content Include="admin\edit_category.aspx" />
     <Content Include="admin\edit_gender.aspx" />
     <Content Include="admin\edit_subcategory.aspx" />
+    <Content Include="admin\Viewproduct.aspx" />
+    <Content Include="admin\delete_product.aspx" />
     <Content Include="App_Data\ShopZone.mdf" />
     <Content Include="App_Data\ShopZone_log.ldf">
       <DependentUpon>ShopZone.mdf</DependentUpon>
@@ -211,6 +213,20 @@
     </Compile>
     <Compile Include="admin\edit_subcategory.aspx.designer.cs">
       <DependentUpon>edit_subcategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Viewproduct.aspx.cs">
+      <DependentUpon>Viewproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Viewproduct.aspx.designer.cs">
+      <DependentUpon>Viewproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\delete_product.aspx.cs">
+      <DependentUpon>delete_product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\delete_product.aspx.designer.cs">
+      <DependentUpon>delete_product.aspx</DependentUpon>
     </Compile>
     <Compile Include="cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>

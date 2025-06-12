@@ -40,7 +40,7 @@ namespace E_commerce
             {
                 try
                 {
-                    string imgDir = Server.MapPath("~/img/");
+                    string imgDir = Server.MapPath("/img/");
                     if (!System.IO.Directory.Exists(imgDir))
                     {
                         System.IO.Directory.CreateDirectory(imgDir);
@@ -48,7 +48,7 @@ namespace E_commerce
                     string fileName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(img.FileName);
                     string filePath = System.IO.Path.Combine(imgDir, fileName);
                     img.SaveAs(filePath);
-                    imagePath = "~/img/" + fileName;
+                    imagePath = "/img/" + fileName;
                 }
                 catch (Exception ex)
                 {

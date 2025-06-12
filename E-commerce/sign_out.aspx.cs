@@ -11,6 +11,11 @@ namespace E_commerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // In logout button click event
+            HttpCookie cartCookie = new HttpCookie("cartpid");
+            cartCookie.Expires = DateTime.Now.AddDays(-1); // Expire it
+            Response.Cookies.Add(cartCookie);
+            
             Session.Abandon();
             Session.RemoveAll();
             Session.Clear();

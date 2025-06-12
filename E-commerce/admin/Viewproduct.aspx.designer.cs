@@ -11,25 +11,25 @@ namespace E_commerce.admin
 {
 
 
-    public partial class adminhomepage
+    public partial class Viewproduct
     {
 
         /// <summary>
-        /// userdata control.
+        /// viewproduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater userdata;
+        protected global::System.Web.UI.WebControls.Repeater viewproduct;
 
         /// <summary>
-        /// pdata control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater pdata;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

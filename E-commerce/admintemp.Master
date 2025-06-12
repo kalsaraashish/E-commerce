@@ -57,17 +57,19 @@
                                     </li>
                                 </ul>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle text-white" href="#" id="Dropdown1" data-bs-toggle="dropdown"  role="button" aria-expanded="false">Products</a>
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="Dropdown1" data-bs-toggle="dropdown" role="button" aria-expanded="false">Products</a>
                                     <ul class="dropdown-menu" aria-labelledby="productsDropdown">
                                         <li class="dropdown-submenu">
                                             <a class="dropdown-item " href="addproduct.aspx">Add Products</a>
+                                        </li>
+                                        <li class="dropdown-submenu">
+                                            <a class="dropdown-item " href="Viewproduct.aspx">View Products</a>
                                         </li>
                                     </ul>
                                 </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="../sign_out.aspx"  role="button"
-                                    >Sign-Out</a>
+                                <a class="nav-link text-white" href="../sign_out.aspx" role="button">Sign-Out</a>
                             </li>
                         </ul>
 

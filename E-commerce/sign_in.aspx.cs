@@ -76,9 +76,9 @@ namespace E_commerce
                 }
                 else
                 {
-                    Response.Write(usertype);
-                    Response.Redirect("~/admin/adminhomepage.aspx");
+                    //Response.Write(usertype);
                     Session["username"] = username.Text;
+                    Response.Redirect("~/admin/adminhomepage.aspx");
                 }
 
                 username.Text = string.Empty;
