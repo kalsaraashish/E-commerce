@@ -58,13 +58,13 @@
 
                                 <!-- Men Category -->
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item " href="#">Men</a>
+                                    <a class="dropdown-item " href="menproduct.aspx">Men</a>
                                    
                                 </li>
 
                                 <!-- Women Category -->
                                 <li class="dropdown-submenu">
-                                    <a class="dropdown-item " href="#">Women</a>
+                                    <a class="dropdown-item " href="womenproduct.aspx">Women</a>
                                    
                                 </li>
 

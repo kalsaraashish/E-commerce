@@ -97,6 +97,7 @@
     <Content Include="images\slide2.jpg" />
     <Content Include="images\slide3.jpg" />
     <Content Include="img\i1.png" />
+    <Content Include="menproduct.aspx" />
     <Content Include="orderplaced.aspx" />
     <Content Include="payment.aspx" />
     <Content Include="recoverpass.aspx" />
@@ -107,6 +108,7 @@
     <Content Include="viewallproduct.aspx" />
     <Content Include="viewproduct.aspx" />
     <Content Include="Web.config" />
+    <Content Include="womenproduct.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admintemp.Master.cs">
@@ -249,6 +251,13 @@
     <Compile Include="Homepage.aspx.designer.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="menproduct.aspx.cs">
+      <DependentUpon>menproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="menproduct.aspx.designer.cs">
+      <DependentUpon>menproduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="orderplaced.aspx.cs">
       <DependentUpon>orderplaced.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,6 +328,13 @@
     </Compile>
     <Compile Include="viewproduct.aspx.designer.cs">
       <DependentUpon>viewproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="womenproduct.aspx.cs">
+      <DependentUpon>womenproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="womenproduct.aspx.designer.cs">
+      <DependentUpon>womenproduct.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

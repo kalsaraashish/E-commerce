@@ -11,7 +11,10 @@ namespace E_commerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["username"] == null)
+            {
+                Response.Redirect("../sign_out.aspx");
+            }
         }
     }
 }

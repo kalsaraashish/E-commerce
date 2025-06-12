@@ -148,18 +148,18 @@ namespace E_commerce
             HttpCookie cookie = Request.Cookies["cartpid"];
             if (cookie == null || string.IsNullOrEmpty(cookie.Value))
             {
-                Response.Redirect("cart.aspx"); return;
+                Response.Redirect("cart.aspx");
+                return;
             }
 
             string cookieValue = cookie.Value;
             Button btn = (Button)sender;
-            string pidsize = btn.CommandArgument; // pid-sizeid
+            string pidsize = btn.CommandArgument;
 
             var list = cookieValue.Split(',')
                                   .Where(i => !string.IsNullOrEmpty(i) && i != pidsize)
                                   .ToList();
 
-            // update / clear cookie
             HttpCookie updated = new HttpCookie("cartpid") { Path = "/" };
             if (list.Count == 0)
                 updated.Expires = DateTime.Now.AddDays(-1);
@@ -168,23 +168,8 @@ namespace E_commerce
                 updated.Value = string.Join(",", list);
                 updated.Expires = DateTime.Now.AddDays(30);
             }
+
             Response.Cookies.Add(updated);
-
-            // remove quantity row too
-            string[] parts = pidsize.Split('-');
-            if (parts.Length == 2)
-            {
-                using (SqlConnection con = new SqlConnection(connStr))
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand(
-                        "DELETE FROM pquantity WHERE pid=@pid AND sid=@sid", con);
-                    cmd.Parameters.AddWithValue("@pid", parts[0]);
-                    cmd.Parameters.AddWithValue("@sid", parts[1]);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-
             Response.Redirect("cart.aspx");
         }
 
